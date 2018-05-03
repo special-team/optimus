@@ -1,0 +1,1 @@
+entity-packages: test.sample.entity

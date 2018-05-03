@@ -1,0 +1,1 @@
+entity-packages: com.github.ooknight.rubik.optimus.archer.platform.entity

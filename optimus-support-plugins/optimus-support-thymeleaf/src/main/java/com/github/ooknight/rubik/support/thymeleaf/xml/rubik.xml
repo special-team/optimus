@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dialect xmlns="http://www.thymeleaf.org/extras/dialect"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.thymeleaf.org/extras/dialect http://www.thymeleaf.org/xsd/thymeleaf-extras-dialect-2.1.xsd"
+         prefix="rubik"
+         namespace-uri="http://www.thymeleaf.org/extras/rubik"
+         namespace-strict="false"
+         class="com.github.ooknight.rubik.support.thymeleaf.dialect.RubikDialect">
+
+    <expression-object name="who" class="com.github.ooknight.rubik.support.thymeleaf.expression.SessionUserExpression"/>
+    <expression-object name="ui" class="com.github.ooknight.rubik.support.thymeleaf.expression.UserInterfaceExpression"/>
+
+</dialect>

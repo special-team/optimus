@@ -1,0 +1,37 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.github.ooknight.rubik</groupId>
+        <artifactId>optimus</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>optimus-support-plugins</artifactId>
+
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>optimus-support-ebean</module>
+        <module>optimus-support-thymeleaf</module>
+        <!--  -->
+        <module>optimus-core-domain</module>
+        <module>optimus-core-kernel</module>
+        <module>optimus-core-web</module>
+        <module>optimus-core-web-security</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.github.ooknight.rubik</groupId>
+                <artifactId>optimus-dependencies</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>
