@@ -2,12 +2,13 @@ package test.com.github.ooknight.rubik.core;
 
 import com.github.ooknight.rubik.core.kernel.DBContext;
 import com.github.ooknight.rubik.core.session.Scope;
-import com.github.ooknight.rubik.optimus.kernel.KernelConfiguration;
+import com.github.ooknight.rubik.optimus.kernel.KernelAutoConfiguration;
 import com.github.ooknight.rubik.support.mocker.Mock;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -18,7 +19,8 @@ import javax.annotation.Resource;
 
 @RunWith(SpringRunner.class)
 @TestPropertySource("classpath:develop.properties")
-@SpringBootTest(classes = KernelConfiguration.class)
+@SpringBootTest(classes = KernelAutoConfiguration.class)
+@EnableAutoConfiguration
 public class DbContextTest {
 
     @Resource

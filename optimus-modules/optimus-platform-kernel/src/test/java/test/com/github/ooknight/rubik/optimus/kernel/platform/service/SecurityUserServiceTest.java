@@ -3,7 +3,7 @@ package test.com.github.ooknight.rubik.optimus.kernel.platform.service;
 import com.github.ooknight.rubik.optimus.archer.platform.entity.Account;
 import com.github.ooknight.rubik.optimus.archer.platform.entity.Privilege;
 import com.github.ooknight.rubik.optimus.archer.platform.service.SecurityUserService;
-import com.github.ooknight.rubik.optimus.kernel.KernelConfiguration;
+import com.github.ooknight.rubik.optimus.kernel.platform.PlatformAutoConfiguration;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -18,7 +18,7 @@ import java.util.Set;
 
 @RunWith(SpringRunner.class)
 @TestPropertySource("classpath:develop.properties")
-@SpringBootTest(classes = KernelConfiguration.class)
+@SpringBootTest(classes = PlatformAutoConfiguration.class)
 public class SecurityUserServiceTest {
 
     @Resource

@@ -65,7 +65,7 @@ public class MockConfig {
     private long[] longRange = {0L, 10000L};
     private String[] dateRange = {"1970-01-01", "2100-12-31"};
     private int[] sizeRange = {1, 10};
-    private boolean enabledCircle = false;
+    private boolean enabledCircle = true;
     private char[] charSeed =
         {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
             'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F',

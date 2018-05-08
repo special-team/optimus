@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.github.ooknight.rubik.optimus.client.web.SecurityConfiguration,\
+  com.github.ooknight.rubik.optimus.client.web.SecurityMethodConfiguration

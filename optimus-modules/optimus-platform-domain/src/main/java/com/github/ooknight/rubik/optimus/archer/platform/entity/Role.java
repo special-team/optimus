@@ -19,7 +19,7 @@ public class Role extends UEntity {
     @Column(name = "name_")
     @JSONField(ordinal = 101)
     private String name;
-    @Column(name = "scope_type_")
-    @JSONField(ordinal = 102)
-    private Integer scopeType;
+    //@Column(name = "scope_type_")
+    //@JSONField(ordinal = 102)
+    //private Integer scopeType;
 }

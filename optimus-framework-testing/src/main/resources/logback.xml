@@ -14,6 +14,7 @@
     </root>
 
     <!--<logger level="error" name="org.springframework.boot.autoconfigure.logging.AutoConfigurationReportLoggingInitializer"/>-->
-    <!--<logger level="error" name="org.springframework.core.env.PropertySourcesPropertyResolver"/>-->
+    <logger level="trace" name="com.github.ooknight"/>
+    <logger level="trace" name="io.ebean"/>
 
 </configuration>

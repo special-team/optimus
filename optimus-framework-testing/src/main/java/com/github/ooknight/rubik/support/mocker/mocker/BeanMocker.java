@@ -20,12 +20,15 @@ public class BeanMocker implements Mocker<Object> {
     @Override
     public Object mock(MockConfig mockConfig) {
         try {
-            // fixme 解决方案不够优雅
-            if (mockConfig.isEnabledCircle()) {
-                Object cacheBean = mockConfig.getCachedBean(clazz.getName());
-                if (cacheBean != null) {
-                    return cacheBean;
-                }
+            Object cacheBean = mockConfig.getCachedBean(clazz.getName());
+            if (cacheBean != null) {
+                return null;
+                //// fixme 解决方案不够优雅
+                //if (mockConfig.isEnabledCircle()) {
+                //    if (cacheBean != null) {
+                //        return cacheBean;
+                //    }
+                //}
             }
             Object result = clazz.newInstance();
             mockConfig.cacheBean(clazz.getName(), result);

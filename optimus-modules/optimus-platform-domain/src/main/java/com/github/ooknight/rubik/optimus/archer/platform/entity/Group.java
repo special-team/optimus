@@ -1,7 +1,6 @@
 package com.github.ooknight.rubik.optimus.archer.platform.entity;
 
 import com.github.ooknight.rubik.core.entity.UEntity;
-import com.github.ooknight.rubik.core.session.Scope;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Getter;
@@ -25,9 +24,9 @@ public class Group extends UEntity {
     @Column(name = "short_name_")
     @JSONField(ordinal = 102)
     private String shortName;
-    @Column(name = "type_")
-    @JSONField(ordinal = 103)
-    private Class<Scope> type;
+    //@Column(name = "type_")
+    //@JSONField(ordinal = 103)
+    //private Class<Scope> type;
     @ManyToOne
     @JoinColumn(name = "superior_id_")
     @JSONField(ordinal = 104)

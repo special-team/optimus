@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import java.util.Collection;
 
 @Agent
+@Deprecated
 public class CacheAgent {
 
     @Resource

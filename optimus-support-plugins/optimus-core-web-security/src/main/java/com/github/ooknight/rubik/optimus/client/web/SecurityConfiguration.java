@@ -5,7 +5,6 @@ import com.github.ooknight.rubik.optimus.archer.platform.service.SecurityUserSer
 import com.github.ooknight.rubik.optimus.client.web.trigger.AuthenticationSuccessTrigger;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -18,7 +17,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import javax.annotation.Resource;
 
 @EnableWebSecurity
-@Import(SecurityMethodConfiguration.class)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Resource

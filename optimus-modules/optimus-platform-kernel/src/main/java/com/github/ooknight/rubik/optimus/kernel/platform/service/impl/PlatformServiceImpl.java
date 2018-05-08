@@ -26,28 +26,28 @@ public class PlatformServiceImpl implements PlatformService {
     private DBContext db;
 
     @Override
-    public void create(Role role) {
-        db.insert(role);
+    public void create(Account account) {
+        db.insert(account);
     }
 
     @Override
-    public void update(Role role) {
-        db.update(role);
+    public void update(Account account) {
+        db.update(account);
     }
 
     @Override
-    public Optional<Role> role(Long id) {
-        return db.getone(Role.class, id);
+    public Optional<Account> account(Long id) {
+        return db.getone(Account.class, id);
     }
 
     @Override
-    public List<Role> role() {
-        return db.select(Role.class);
+    public List<Account> account() {
+        return db.select(Account.class);
     }
 
     @Override
-    public QRole createRoleQuery() {
-        return db.createQuery(QRole.class);
+    public QAccount createAccountQuery() {
+        return db.createQuery(QAccount.class);
     }
 
     @Override
@@ -76,28 +76,28 @@ public class PlatformServiceImpl implements PlatformService {
     }
 
     @Override
-    public void create(Account account) {
-        db.insert(account);
+    public void create(Role role) {
+        db.insert(role);
     }
 
     @Override
-    public void update(Account account) {
-        db.update(account);
+    public void update(Role role) {
+        db.update(role);
     }
 
     @Override
-    public Optional<Account> account(Long id) {
-        return db.getone(Account.class, id);
+    public Optional<Role> role(Long id) {
+        return db.getone(Role.class, id);
     }
 
     @Override
-    public List<Account> account() {
-        return db.select(Account.class);
+    public List<Role> role() {
+        return db.select(Role.class);
     }
 
     @Override
-    public QAccount createAccountQuery() {
-        return db.createQuery(QAccount.class);
+    public QRole createRoleQuery() {
+        return db.createQuery(QRole.class);
     }
 
     @Cacheable("menu")
@@ -120,6 +120,6 @@ public class PlatformServiceImpl implements PlatformService {
 
     @Override
     public void changeAccountPassword(Long accountId, String password) {
-        db.update(Account.class).set("password", password).where().eq("id", accountId).update();
+        db.update(Account.class).set("password", password).where().idEq(accountId).update();
     }
 }

@@ -1,5 +1,6 @@
 package com.github.ooknight.rubik.optimus.archer.platform.service;
 
+import com.github.ooknight.rubik.core.service.IService;
 import com.github.ooknight.rubik.optimus.archer.platform.entity.Account;
 import com.github.ooknight.rubik.optimus.archer.platform.entity.Function;
 import com.github.ooknight.rubik.optimus.archer.platform.entity.Group;
@@ -12,17 +13,17 @@ import com.github.ooknight.rubik.optimus.archer.platform.entity.query.QRole;
 import java.util.List;
 import java.util.Optional;
 
-public interface PlatformService {
+public interface PlatformService extends IService {
 
-    void create(Role role);
+    void create(Account account);
 
-    void update(Role role);
+    void update(Account account);
 
-    Optional<Role> role(Long id);
+    Optional<Account> account(Long id);
 
-    List<Role> role();
+    List<Account> account();
 
-    QRole createRoleQuery();
+    QAccount createAccountQuery();
 
     void create(Group group);
 
@@ -34,15 +35,15 @@ public interface PlatformService {
 
     QGroup createGroupQuery();
 
-    void create(Account account);
+    void create(Role role);
 
-    void update(Account account);
+    void update(Role role);
 
-    Optional<Account> account(Long id);
+    Optional<Role> role(Long id);
 
-    List<Account> account();
+    List<Role> role();
 
-    QAccount createAccountQuery();
+    QRole createRoleQuery();
 
     List<Module> menu();
 
