@@ -77,32 +77,32 @@
             <dependency>
                 <groupId>com.github.ooknight.ui</groupId>
                 <artifactId>bootstrap</artifactId>
-                <version>4.1.1.0</version>
+                <version>4.1.1.1</version>
             </dependency>
             <dependency>
                 <groupId>com.github.ooknight.ui</groupId>
                 <artifactId>bootstrap3</artifactId>
-                <version>3.3.7.0</version>
+                <version>3.3.7.1</version>
             </dependency>
             <dependency>
                 <groupId>com.github.ooknight.ui</groupId>
                 <artifactId>jquery</artifactId>
-                <version>3.3.1.0</version>
+                <version>3.3.1.1</version>
             </dependency>
             <dependency>
                 <groupId>com.github.ooknight.ui</groupId>
                 <artifactId>jquery2</artifactId>
-                <version>2.2.4.0</version>
+                <version>2.2.4.1</version>
             </dependency>
             <dependency>
                 <groupId>com.github.ooknight.ui</groupId>
                 <artifactId>semantic-ui</artifactId>
-                <version>2.3.1.0</version>
+                <version>2.3.1.1</version>
             </dependency>
             <dependency>
                 <groupId>com.github.ooknight.ui</groupId>
                 <artifactId>vuetify</artifactId>
-                <version>1.0.17.0</version>
+                <version>1.0.17.1</version>
             </dependency>
             <dependency>
                 <groupId>io.ebean</groupId>

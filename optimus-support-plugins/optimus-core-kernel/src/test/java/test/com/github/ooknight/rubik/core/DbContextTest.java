@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import test.sample.entity.Sample;
 import test.sample.entity.query.QSample;
@@ -18,9 +18,9 @@ import test.sample.entity.query.QSample;
 import javax.annotation.Resource;
 
 @RunWith(SpringRunner.class)
-@TestPropertySource("classpath:develop.properties")
 @SpringBootTest(classes = KernelAutoConfiguration.class)
 @EnableAutoConfiguration
+@ActiveProfiles("develop")
 public class DbContextTest {
 
     @Resource
