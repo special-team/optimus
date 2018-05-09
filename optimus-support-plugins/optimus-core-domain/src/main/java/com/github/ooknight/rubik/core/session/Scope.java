@@ -25,25 +25,25 @@ public final class Scope extends OClass {
     private Map<Class, Expression> expressions;
     private Expression defaultExpression;
 
-    private Scope(Long uid, Long rid, Long gid, Set<String> restricteds, Map<Class, Expression> expressions, boolean admin) {
+    private Scope(Long uid, Long rid, Long gid, Set<String> restricteds, Map<Class, Expression> expressions, boolean supervisor) {
         this.uid = uid;
         this.rid = rid;
         this.gid = gid;
         this.restricteds = (restricteds == null ? Sets.newHashSet() : restricteds);
         this.expressions = (expressions == null ? Maps.newHashMap() : expressions);
-        this.defaultExpression = admin ? ALWAYS_TRUE : ALWAYS_FALSE;
+        this.defaultExpression = supervisor ? ALWAYS_TRUE : ALWAYS_FALSE;
     }
 
     public static Scope DUMMY() {
         return new Scope(0L, 0L, 0L, null, null, false);
     }
 
-    public static Scope BUILD(Long uid, Long rid, Long gid, boolean admin) {
-        return new Scope(uid, rid, gid, null, null, admin);
+    public static Scope BUILD(Long uid, Long rid, Long gid, boolean supervisor) {
+        return new Scope(uid, rid, gid, null, null, supervisor);
     }
 
-    public static Scope BUILD(Long uid, Long rid, Long gid, Set<String> restricteds, Map<Class, Expression> expressions, boolean admin) {
-        return new Scope(uid, rid, gid, restricteds, expressions, admin);
+    public static Scope BUILD(Long uid, Long rid, Long gid, Set<String> restricteds, Map<Class, Expression> expressions, boolean supervisor) {
+        return new Scope(uid, rid, gid, restricteds, expressions, supervisor);
     }
 
     @JSONField(name = "uid", ordinal = 1)

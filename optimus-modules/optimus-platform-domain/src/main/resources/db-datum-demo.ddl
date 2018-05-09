@@ -21,9 +21,9 @@ INSERT INTO e_platform_role (id_, name_, deleted_, created_, updated_) VALUES
 -- account
 -- ======== ======== ======== ========
 INSERT INTO e_platform_account (id_, username_, password_, nickname_, role_id_, group_id_, type_, salt_, deleted_, created_, updated_) VALUES
-    (1011, 'user1', '$2a$08$Q.sEn3Ey190/Gh17GWoV.uJm0bayX3jNNR95CbFViSywzt/3fZppW', '曹操孟德', 10, 10, 1, '*', 0, now(), now()),
-    (1021, 'user2', '$2a$08$Q.sEn3Ey190/Gh17GWoV.uJm0bayX3jNNR95CbFViSywzt/3fZppW', '刘备玄德', 10, 20, 1, '*', 0, now(), now()),
-    (1031, 'user3', '$2a$08$Q.sEn3Ey190/Gh17GWoV.uJm0bayX3jNNR95CbFViSywzt/3fZppW', '孙权仲谋', 10, 30, 1, '*', 0, now(), now());
+    (1011, '曹操', '{noop}123456', '孟德', 10, 10, 11, '*', 0, now(), now()),
+    (1021, '刘备', '{noop}123456', '玄德', 10, 20, 11, '*', 0, now(), now()),
+    (1031, '孙权', '{noop}123456', '仲谋', 10, 30, 11, '*', 0, now(), now());
 
 -- ======== ======== ======== ========
 -- role resource

@@ -23,10 +23,7 @@ public class SecurityUserServiceImpl implements SecurityUserService {
 
     @Override
     public Optional<Account> getAccount(String username) {
-        /// use query bean
-        //return agent.getAccountByUsername(username);
-        //return db.createQuery(Account.class).fetch("role").fetch("group").where().eq("username", username).findOneOrEmpty();
-        return new QAccount().role.fetch().group.fetch().username.equalTo(username).findOneOrEmpty();
+        return db.createQuery(QAccount.class).role.fetch().group.fetch().username.equalTo(username).findOneOrEmpty();
     }
 
     @Override
@@ -40,14 +37,21 @@ public class SecurityUserServiceImpl implements SecurityUserService {
     }
 
     @Override
-    public Set<String> getResourceForAdministrator() {
-        return Sets.newHashSet(db.createNamedQuery(Function.class, "get-resource-for-administrator").findSingleAttributeList());
+    public Set<String> getResourceForSupervisor() {
+        return Sets.newHashSet(db.createNamedQuery(Function.class, "get-resource-for-supervisor").findSingleAttributeList());
     }
 
     @Override
     public Set<Privilege> getPrivilege(Long role, Long group) {
-        return db.createQuery(Privilege.class).where()
-            .or().eq("role", role).eq("group", group).endOr()
-            .findSet();
+        if (role != null && group != null) {
+            return db.createQuery(Privilege.class).where().or().eq("role", role).eq("group", group).endOr().findSet();
+        }
+        if (role != null) {
+            return db.createQuery(Privilege.class).where().eq("role", role).findSet();
+        }
+        if (group != null) {
+            return db.createQuery(Privilege.class).where().eq("group", group).findSet();
+        }
+        return Sets.newHashSet();
     }
 }

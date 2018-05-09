@@ -2,7 +2,6 @@ package com.github.ooknight.rubik.optimus.client.web.trigger;
 
 import com.github.ooknight.rubik.core.client.web.security.authentication.SessionUserAdapter;
 import com.github.ooknight.rubik.core.session.Scope;
-import com.github.ooknight.rubik.core.session.SessionUser;
 import com.github.ooknight.rubik.optimus.archer.platform.entity.Privilege;
 import com.github.ooknight.rubik.optimus.archer.platform.service.SecurityUserService;
 
@@ -32,7 +31,7 @@ public class AuthenticationSuccessTrigger implements ApplicationListener<Authent
         Long uid = sua.uid();
         Long rid = sua.rid();
         Long gid = sua.gid();
-        boolean admin = sua.admin();
+        boolean supervisor = sua.god() || sua.admin();
         //
         Set<String> resources;
         Set<String> tags;
@@ -40,9 +39,9 @@ public class AuthenticationSuccessTrigger implements ApplicationListener<Authent
         //
         tags = Sets.newHashSet("u#" + uid, "r#" + rid, "g#" + gid);
         //
-        if (admin) {
-            resources = service.getResourceForAdministrator();
-            tags.add(SessionUser.TAG_ADMIN);
+        if (supervisor) {
+            resources = service.getResourceForSupervisor();
+            tags.add("supervisor");
             scope = Scope.BUILD(uid, rid, gid, true);
         } else {
             Map<Class, Expression> expressions = Maps.newHashMap();
