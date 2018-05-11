@@ -24,6 +24,7 @@
             <!-- ========= ========= ========= ========= ========= ========= ========= ========= ========= 覆盖 -->
             <!-- none -->
             <!-- ========= ========= ========= ========= ========= ========= ========= ========= ========= 自定义 -->
+            <!-- ========= ========= ========= optimus -->
             <dependency>
                 <groupId>com.github.ooknight.rubik</groupId>
                 <artifactId>optimus-framework</artifactId>
@@ -69,6 +70,7 @@
                 <artifactId>optimus-platform-domain</artifactId>
                 <version>${version.com.github.ooknight.rubik}</version>
             </dependency>
+            <!-- ========= ========= ========= ooknight ui -->
             <dependency>
                 <groupId>com.github.ooknight.rubik</groupId>
                 <artifactId>optimus-platform-kernel</artifactId>
@@ -104,6 +106,7 @@
                 <artifactId>vuetify</artifactId>
                 <version>1.0.17.1</version>
             </dependency>
+            <!-- ========= ========= ========= ebean orm -->
             <dependency>
                 <groupId>io.ebean</groupId>
                 <artifactId>ebean</artifactId>
@@ -124,6 +127,18 @@
                 <artifactId>querybean-generator</artifactId>
                 <version>11.1.2</version>
             </dependency>
+            <!-- ========= ========= ========= ignite -->
+            <dependency>
+                <groupId>org.apache.ignite</groupId>
+                <artifactId>ignite-core</artifactId>
+                <version>2.4.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.ignite</groupId>
+                <artifactId>ignite-slf4j</artifactId>
+                <version>2.4.0</version>
+            </dependency>
+            <!-- ========= ========= ========= others -->
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>

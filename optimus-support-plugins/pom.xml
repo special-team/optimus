@@ -14,6 +14,7 @@
 
     <modules>
         <module>optimus-support-ebean</module>
+        <module>optimus-support-ignite</module>
         <module>optimus-support-thymeleaf</module>
         <!--  -->
         <module>optimus-core-domain</module>

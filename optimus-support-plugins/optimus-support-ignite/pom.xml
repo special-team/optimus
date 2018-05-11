@@ -8,16 +8,12 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>optimus-core-web-security</artifactId>
+    <artifactId>optimus-support-ignite</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>com.github.ooknight.rubik</groupId>
-            <artifactId>optimus-core-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.ooknight.rubik</groupId>
-            <artifactId>optimus-platform-domain</artifactId>
+            <groupId>org.apache.ignite</groupId>
+            <artifactId>ignite-slf4j</artifactId>
         </dependency>
         <dependency>
             <groupId>com.github.ooknight.rubik</groupId>
