@@ -5,14 +5,12 @@ import com.alibaba.fastjson.annotation.JSONField;
 import java.io.Serializable;
 import java.util.Set;
 
-@SuppressWarnings("unused")
 public interface SessionUser extends Serializable {
 
-    //Integer TYPE_NORMAL = 1;
-    //Integer TYPE_ADMIN = 9;
-    //
-    String TAG_ADMIN = "admin";
-    String SESSION_PARAMETER_NAME = "who";
+    /*
+    //String TAG_ADMIN = "admin";
+    //String SESSION_PARAMETER_NAME = "who";
+    */
 
     @JSONField(name = "uid", ordinal = 1)
     Long uid();
@@ -26,15 +24,18 @@ public interface SessionUser extends Serializable {
     @JSONField(name = "name", ordinal = 4)
     String name();
 
-    @JSONField(name = "admin", ordinal = 5)
+    @JSONField(name = "god", ordinal = 5)
+    boolean god();
+
+    @JSONField(name = "admin", ordinal = 6)
     boolean admin();
 
-    @JSONField(name = "resources", ordinal = 6)
+    @JSONField(name = "resources", ordinal = 7)
     Set<String> resources();
 
-    @JSONField(name = "tags", ordinal = 7)
+    @JSONField(name = "tags", ordinal = 8)
     Set<String> tags();
 
-    @JSONField(name = "scope", ordinal = 8)
+    @JSONField(name = "scope", ordinal = 9)
     Scope scope();
 }

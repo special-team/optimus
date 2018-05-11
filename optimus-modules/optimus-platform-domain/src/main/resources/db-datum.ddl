@@ -31,4 +31,5 @@ INSERT INTO e_platform_function (id_, name_, code_, module_id_, parent_, url_, t
 -- account
 -- ======== ======== ======== ========
 INSERT INTO e_platform_account (id_, username_, password_, nickname_, type_, salt_, deleted_, created_, updated_) VALUES
-    (1, 'admin', '{noop}654321', '小盆友2', 9, '*', 0, now(), now());
+    (1, 'god', '{noop}123456', '超级管理员', 1, '*', 0, now(), now()),
+    (10, 'admin', '{noop}123456', '管理员', 10, '*', 0, now(), now());

@@ -1,9 +1,9 @@
 package com.github.ooknight.rubik.core.client.web.security.authentication;
 
 import com.github.ooknight.rubik.core.entity.State;
+import com.github.ooknight.rubik.core.session.AccountType;
 import com.github.ooknight.rubik.core.session.Scope;
 import com.github.ooknight.rubik.core.session.SessionUser;
-import com.github.ooknight.rubik.core.session.AccountType;
 
 import com.google.common.collect.Sets;
 import org.springframework.security.core.CredentialsContainer;
@@ -40,8 +40,6 @@ public final class SessionUserAdapter implements SessionUser, UserDetails, Crede
         this.type = type;
         this.state = state;
         this.authorities = parseAuthorities();
-        //this.scope = scope;
-        //this.resources = (resources == null ? Sets.newHashSet() : resources);
     }
 
     public void init(Set<String> resources, Set<String> tags, Scope scope) {
@@ -54,6 +52,9 @@ public final class SessionUserAdapter implements SessionUser, UserDetails, Crede
         Set<GrantedAuthority> result = Sets.newHashSet(new SimpleGrantedAuthority("ROLE_USER"));
         if (this.type == AccountType.ADMIN) {
             result.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        }
+        if (this.type == AccountType.GOD) {
+            result.add(new SimpleGrantedAuthority("ROLE_GOD"));
         }
         return result;
     }
@@ -78,6 +79,11 @@ public final class SessionUserAdapter implements SessionUser, UserDetails, Crede
     @Override
     public String name() {
         return this.name;
+    }
+
+    @Override
+    public boolean god() {
+        return this.type == AccountType.GOD;
     }
 
     @Override

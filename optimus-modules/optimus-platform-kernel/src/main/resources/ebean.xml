@@ -19,7 +19,7 @@
                 WHERE r.account_id_ = :id
             </query>
         </raw-sql>
-        <raw-sql name="get-resource-for-administrator">
+        <raw-sql name="get-resource-for-supervisor">
             <column-mapping column="f.code_" property="code"/>
             <query>
                 SELECT f.code_

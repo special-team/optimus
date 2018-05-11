@@ -1,15 +1,15 @@
 package test.com.github.ooknight.rubik.optimus.kernel.platform.service;
 
 import com.github.ooknight.rubik.optimus.archer.platform.entity.Account;
-import com.github.ooknight.rubik.optimus.archer.platform.entity.Privilege;
 import com.github.ooknight.rubik.optimus.archer.platform.service.SecurityUserService;
 import com.github.ooknight.rubik.optimus.kernel.platform.PlatformAutoConfiguration;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
@@ -17,8 +17,9 @@ import java.util.Optional;
 import java.util.Set;
 
 @RunWith(SpringRunner.class)
-@TestPropertySource("classpath:develop.properties")
 @SpringBootTest(classes = PlatformAutoConfiguration.class)
+@EnableAutoConfiguration
+@ActiveProfiles("develop")
 public class SecurityUserServiceTest {
 
     @Resource
@@ -50,14 +51,19 @@ public class SecurityUserServiceTest {
 
     @Test
     public void getResourceForAdministrator() {
-        Set<String> r = service.getResourceForAdministrator();
+        Set<String> r = service.getResourceForSupervisor();
         Assert.assertFalse(r.isEmpty());
     }
 
     @Test
     public void getPrivilege() {
-        Set<Privilege> r1 = service.getPrivilege(1L, 1L);
-        Assert.assertTrue(r1.isEmpty());
-        System.out.println(r1);
+        System.out.println("========= role X ========= group X");
+        System.out.println(service.getPrivilege(null, null));
+        System.out.println("========= role X ========= group O");
+        System.out.println(service.getPrivilege(null, 1L));
+        System.out.println("========= role O ========= group X");
+        System.out.println(service.getPrivilege(1L, null));
+        System.out.println("========= role O ========= group O");
+        System.out.println(service.getPrivilege(1L, 1L));
     }
 }

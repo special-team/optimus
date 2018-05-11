@@ -19,7 +19,7 @@ public interface SecurityUserService extends IService {
 
     Set<String> getResource(Long role, Long account);
 
-    Set<String> getResourceForAdministrator();
+    Set<String> getResourceForSupervisor();
 
     Set<Privilege> getPrivilege(Long role, Long group);
 }

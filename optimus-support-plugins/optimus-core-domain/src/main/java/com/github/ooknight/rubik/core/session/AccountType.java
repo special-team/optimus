@@ -4,7 +4,7 @@ import io.ebean.annotation.EnumValue;
 
 public enum AccountType {
     //
-    @EnumValue("1") NORMAL,
-    @EnumValue("8") ADMIN,
-    @EnumValue("9") GOD
+    @EnumValue("1") GOD,
+    @EnumValue("10") ADMIN,
+    @EnumValue("11") NORMAL,
 }
