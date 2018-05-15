@@ -8,12 +8,17 @@ public class ToolkitTest {
 
     @Test
     public void dateFormat() {
-        System.out.println(TOOLKIT.DATE_FROMAT);
+        System.out.println(TOOLKIT.DATE_FORMAT);
     }
 
     @Test
     public void dateTimeFormat() {
-        System.out.println(TOOLKIT.DATE_TIME_FROMAT);
+        System.out.println(TOOLKIT.DATE_TIME_FORMAT);
+    }
+
+    @Test
+    public void timeFormat() {
+        System.out.println(TOOLKIT.TIME_FORMAT);
     }
 
     @Test

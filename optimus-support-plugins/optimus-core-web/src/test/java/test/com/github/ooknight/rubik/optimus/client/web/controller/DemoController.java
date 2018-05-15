@@ -3,17 +3,18 @@ package test.com.github.ooknight.rubik.optimus.client.web.controller;
 import optimus.TOOLKIT;
 import com.github.ooknight.rubik.core.client.BusinessEventPublisher;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.google.common.collect.Maps;
-import lombok.Data;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.servlet.support.RequestContext;
 
 import javax.annotation.Resource;
-import java.time.LocalDate;
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
-import java.util.Map;
+import java.time.format.DateTimeFormatter;
 
 @RestController
 public class DemoController {
@@ -22,26 +23,23 @@ public class DemoController {
     private BusinessEventPublisher publisher;
 
     @GetMapping("/demo")
-    public Map demo() {
-        System.out.println(publisher);
-        Map<String, Object> x = Maps.newHashMap();
-        x.put("x", LocalDate.now());
-        x.put("y", LocalDateTime.now());
-        x.put("z", new A());
-        return x;
+    public String demo() {
+        Assert.notNull(publisher, "publisher must not null");
+        return "ok";
     }
 
     @GetMapping(value = "/demo", params = "p")
-    public LocalDateTime demo(@RequestParam("p") LocalDateTime param) {
-        return param;
+    public String demo(@RequestParam("p") LocalDateTime param) {
+        return "parameter is " + DateTimeFormatter.ofPattern(TOOLKIT.DATE_TIME_FORMAT).format(param);
     }
 
-    @Data
-    class A {
-
-        @JsonFormat(pattern = TOOLKIT.DATE_FROMAT)
-        private LocalDate x = LocalDate.now();
-        @JsonFormat(pattern = TOOLKIT.DATE_TIME_FROMAT)
-        private LocalDateTime y = LocalDateTime.now();
+    @GetMapping(value = "/demo", params = {"key"})
+    public String demo(String key) {
+        //System.out.println(LocaleContextHolder.getLocale());
+        //System.out.println(RequestContextUtils.getLocale(request));
+        //
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        RequestContext requestContext = new RequestContext(request);
+        return requestContext.getMessage(key);
     }
 }

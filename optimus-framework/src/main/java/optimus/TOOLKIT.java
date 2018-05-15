@@ -9,8 +9,8 @@ import java.time.LocalTime;
 
 public final class TOOLKIT {
 
-    public final static String DATE_FROMAT = "yyyy-MM-dd";
-    public final static String DATE_TIME_FROMAT = "yyyy-MM-dd HH:mm:ss";
+    public final static String DATE_FORMAT = "yyyy-MM-dd";
+    public final static String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
     public final static String TIME_FORMAT = "HH:mm:ss";
 
     private TOOLKIT() {

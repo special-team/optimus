@@ -17,7 +17,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import javax.annotation.Resource;
 
 @EnableWebSecurity
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class SecurityAutoConfiguration extends WebSecurityConfigurerAdapter {
 
     @Resource
     private SecurityUserService securityUserService;

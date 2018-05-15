@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration;
 
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class SecurityMethodConfiguration extends GlobalMethodSecurityConfiguration {
+public class SecurityMethodAutoConfiguration extends GlobalMethodSecurityConfiguration {
 
     @Override
     protected MethodSecurityExpressionHandler createExpressionHandler() {
