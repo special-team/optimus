@@ -9,6 +9,7 @@ import com.github.ooknight.rubik.optimus.archer.platform.entity.Role;
 import com.github.ooknight.rubik.optimus.archer.platform.entity.query.QAccount;
 import com.github.ooknight.rubik.optimus.archer.platform.entity.query.QGroup;
 import com.github.ooknight.rubik.optimus.archer.platform.entity.query.QRole;
+import com.github.ooknight.rubik.optimus.archer.platform.entity.query.QSetting;
 import com.github.ooknight.rubik.optimus.archer.platform.enums.DisplayMode;
 import com.github.ooknight.rubik.optimus.archer.platform.service.PlatformService;
 
@@ -121,5 +122,10 @@ public class PlatformServiceImpl implements PlatformService {
     @Override
     public void changeAccountPassword(Long accountId, String password) {
         db.update(Account.class).set("password", password).where().idEq(accountId).update();
+    }
+
+    @Override
+    public QSetting createSettingQuery() {
+        return db.createQuery(QSetting.class);
     }
 }

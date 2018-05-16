@@ -14,7 +14,6 @@ import java.util.Set;
 public class RubikExpressionObjectFactory implements IExpressionObjectFactory {
 
     private static final String SESSION_USER_EXPRESSION_OBJECT_NAME = "who";
-    private static final String DICTIONARY_EXPRESSION_OBJECT_NAME = "dictionary";
     private static final String USER_INTERFACE_EXPRESSION_OBJECT_NAME = "ui";
     ///
     private static final SessionUserExpression SESSION_USER_EXPRESSION = new SessionUserExpression();
@@ -22,7 +21,6 @@ public class RubikExpressionObjectFactory implements IExpressionObjectFactory {
     private static final Set<String> ALL_EXPRESSION_OBJECT_NAMES = Collections.unmodifiableSet(
         new HashSet<>(Arrays.asList(
             SESSION_USER_EXPRESSION_OBJECT_NAME,
-            DICTIONARY_EXPRESSION_OBJECT_NAME,
             USER_INTERFACE_EXPRESSION_OBJECT_NAME
         ))
     );

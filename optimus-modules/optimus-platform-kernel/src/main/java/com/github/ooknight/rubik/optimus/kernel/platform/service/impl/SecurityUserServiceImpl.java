@@ -44,13 +44,13 @@ public class SecurityUserServiceImpl implements SecurityUserService {
     @Override
     public Set<Privilege> getPrivilege(Long role, Long group) {
         if (role != null && group != null) {
-            return db.createQuery(Privilege.class).where().or().eq("role", role).eq("group", group).endOr().findSet();
+            return db.createQuery(Privilege.class).where().or().eq("role.id", role).eq("group.id", group).endOr().findSet();
         }
         if (role != null) {
-            return db.createQuery(Privilege.class).where().eq("role", role).findSet();
+            return db.createQuery(Privilege.class).where().eq("role.id", role).findSet();
         }
         if (group != null) {
-            return db.createQuery(Privilege.class).where().eq("group", group).findSet();
+            return db.createQuery(Privilege.class).where().eq("group.id", group).findSet();
         }
         return Sets.newHashSet();
     }

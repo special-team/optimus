@@ -1,4 +1,4 @@
-package test.com.github.ooknight.rubik.optimus.client.web.controller;
+package assist.sample.controller;
 
 import optimus.TOOLKIT;
 import com.github.ooknight.rubik.core.client.BusinessEventPublisher;
@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @RestController
-public class DemoController {
+public class SampleController {
 
     @Resource
     private BusinessEventPublisher publisher;

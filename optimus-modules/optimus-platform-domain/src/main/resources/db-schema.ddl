@@ -1,7 +1,7 @@
 /*!40014 SET FOREIGN_KEY_CHECKS = 0 */;
 /*!40101 SET SQL_MODE = 'NO_AUTO_VALUE_ON_ZERO' */;
 
-DROP TABLE IF EXISTS e_platform_config;
+DROP TABLE IF EXISTS e_platform_setting;
 DROP TABLE IF EXISTS e_platform_module;
 DROP TABLE IF EXISTS e_platform_function;
 DROP TABLE IF EXISTS e_platform_role;
@@ -15,15 +15,15 @@ DROP TABLE IF EXISTS e_platform_message;
 -- ======== ======== ======== ========
 -- config
 -- ======== ======== ======== ========
-CREATE TABLE e_platform_config (
+CREATE TABLE e_platform_setting (
     id_           BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键',
     config_key_   VARCHAR(64)     NULL COMMENT '配置KEY',
     config_value_ VARCHAR(64)     NULL COMMENT '配置VALUE',
     deleted_      INT             NOT NULL COMMENT '记录状态[0:有效|1:无效]',
     created_      DATETIME        NOT NULL COMMENT '记录创建时间',
     updated_      DATETIME        NOT NULL COMMENT '记录更新时间',
-    CONSTRAINT config_pk PRIMARY KEY (id_),
-    CONSTRAINT config_uk_config_key UNIQUE (config_key_)
+    CONSTRAINT setting_pk PRIMARY KEY (id_),
+    CONSTRAINT setting_uk_config_key UNIQUE KEY (config_key_)
 );
 
 -- ======== ======== ======== ========
@@ -38,7 +38,7 @@ CREATE TABLE e_platform_module (
     created_ DATETIME        NOT NULL COMMENT '记录创建时间',
     updated_ DATETIME        NOT NULL COMMENT '记录更新时间',
     CONSTRAINT module_pk PRIMARY KEY (id_),
-    CONSTRAINT module_uk_name UNIQUE (name_)
+    CONSTRAINT module_uk_name UNIQUE KEY (name_)
 );
 
 -- ======== ======== ======== ========
@@ -68,14 +68,13 @@ CREATE TABLE e_platform_function (
 -- role
 -- ======== ======== ======== ========
 CREATE TABLE e_platform_role (
-    id_         BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键',
-    name_       VARCHAR(150)    NOT NULL COMMENT '角色名称',
-    scope_type_ INT             NULL COMMENT '权限范围[not used]',
-    deleted_    INT             NOT NULL COMMENT '记录状态[0:有效|1:无效]',
-    created_    DATETIME        NOT NULL COMMENT '记录创建时间',
-    updated_    DATETIME        NOT NULL COMMENT '记录更新时间',
+    id_      BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键',
+    name_    VARCHAR(150)    NOT NULL COMMENT '角色名称',
+    deleted_ INT             NOT NULL COMMENT '记录状态[0:有效|1:无效]',
+    created_ DATETIME        NOT NULL COMMENT '记录创建时间',
+    updated_ DATETIME        NOT NULL COMMENT '记录更新时间',
     CONSTRAINT role_pk PRIMARY KEY (id_),
-    CONSTRAINT role_uk_name UNIQUE (name_)
+    CONSTRAINT role_uk_name UNIQUE KEY (name_)
 );
 
 -- ======== ======== ======== ========
@@ -85,13 +84,12 @@ CREATE TABLE e_platform_group (
     id_          BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键',
     name_        VARCHAR(50)     NOT NULL COMMENT '名称',
     short_name_  VARCHAR(50)     NULL COMMENT '简称',
-    type_        VARCHAR(99)     NULL COMMENT '类型[not used]',
     superior_id_ BIGINT UNSIGNED NULL COMMENT '上级',
     deleted_     INT             NOT NULL COMMENT '记录状态[0:有效|1:无效]',
     created_     DATETIME        NOT NULL COMMENT '记录创建时间',
     updated_     DATETIME        NOT NULL COMMENT '记录更新时间',
     CONSTRAINT group_pk PRIMARY KEY (id_),
-    CONSTRAINT group_uk_name UNIQUE (name_),
+    CONSTRAINT group_uk_name UNIQUE KEY (name_),
     CONSTRAINT group_fk_superior FOREIGN KEY (superior_id_) REFERENCES e_platform_group (id_)
 );
 
@@ -115,7 +113,7 @@ CREATE TABLE e_platform_account (
     created_            DATETIME        NOT NULL COMMENT '记录创建时间',
     updated_            DATETIME        NOT NULL COMMENT '记录更新时间',
     CONSTRAINT account_pk PRIMARY KEY (id_),
-    CONSTRAINT account_uk_username UNIQUE (username_),
+    CONSTRAINT account_uk_username UNIQUE KEY (username_),
     CONSTRAINT account_fk_role FOREIGN KEY (role_id_) REFERENCES e_platform_role (id_),
     CONSTRAINT account_fk_group FOREIGN KEY (group_id_) REFERENCES e_platform_group (id_)
 );
@@ -147,8 +145,8 @@ CREATE TABLE e_platform_account_resource (
 -- ======== ======== ======== ========
 CREATE TABLE e_platform_privilege (
     id_         BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键',
-    role_       BIGINT          NULL COMMENT '角色',
-    group_      BIGINT          NULL COMMENT '组',
+    group_id_   BIGINT          NULL COMMENT '组',
+    role_id_    BIGINT          NULL COMMENT '角色',
     entity_     VARCHAR(100)    NULL COMMENT '实体',
     field_      VARCHAR(100)    NULL COMMENT '属性',
     operator_   VARCHAR(100)    NULL COMMENT '关系运算',
@@ -157,7 +155,9 @@ CREATE TABLE e_platform_privilege (
     deleted_    INT             NOT NULL COMMENT '记录状态[0:有效|1:无效]',
     created_    DATETIME        NOT NULL COMMENT '记录创建时间',
     updated_    DATETIME        NOT NULL COMMENT '记录更新时间',
-    CONSTRAINT privilege_pk PRIMARY KEY (id_)
+    CONSTRAINT privilege_pk PRIMARY KEY (id_),
+    CONSTRAINT privilege_fk_role FOREIGN KEY (role_id_) REFERENCES e_platform_role (id_),
+    CONSTRAINT privilege_fk_group FOREIGN KEY (group_id_) REFERENCES e_platform_group (id_)
 );
 
 -- ======== ======== ======== ========

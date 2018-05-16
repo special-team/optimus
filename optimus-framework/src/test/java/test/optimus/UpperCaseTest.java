@@ -4,7 +4,7 @@ import optimus.TOOLKIT;
 
 import org.junit.Test;
 
-public class ToolkitTest {
+public class UpperCaseTest {
 
     @Test
     public void dateFormat() {

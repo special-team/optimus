@@ -1,17 +1,18 @@
-package test;
+package test.optimus;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.text.DateFormat;
 import java.time.DayOfWeek;
-import java.time.Instant;
 import java.time.format.TextStyle;
 import java.util.Date;
 import java.util.Locale;
 
-public class ComponentsTest {
+@Ignore
+public class Scattered {
 
     @Test
     public void testDateTimeFormt() {
@@ -42,12 +43,5 @@ public class ComponentsTest {
             }
         }
     }
-
-    @Test
-    public void testTime() {
-        System.out.println(Instant.now());
-        System.out.println(System.nanoTime());
-        System.out.println(System.currentTimeMillis());
-        System.out.println(Long.MAX_VALUE);
-    }
 }
+

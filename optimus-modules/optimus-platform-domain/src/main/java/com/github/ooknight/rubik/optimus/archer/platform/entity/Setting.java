@@ -8,24 +8,25 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "e_platform_group")
-public class Group extends UEntity {
+@Table(name = "e_platform_setting")
+public class Setting extends UEntity {
 
-    @Column(name = "name_")
+    @Column(name = "config_key_")
     @JSONField(ordinal = 101)
-    private String name;
-    @Column(name = "short_name_")
+    @Enumerated(EnumType.STRING)
+    private KEY configKey;
+    @Column(name = "config_value_")
     @JSONField(ordinal = 102)
-    private String shortName;
-    @ManyToOne
-    @JoinColumn(name = "superior_id_")
-    @JSONField(ordinal = 104)
-    private Group superior;
+    private String configValue;
+
+    public enum KEY {
+        ACCOUNT_DEFAULT_PASSWORD
+    }
 }

@@ -2,6 +2,12 @@
 /*!40101 SET SQL_MODE = 'NO_AUTO_VALUE_ON_ZERO' */;
 
 -- ======== ======== ======== ========
+-- setting
+-- ======== ======== ======== ========
+INSERT INTO e_platform_setting (id_, config_key_, config_value_, deleted_, created_, updated_) VALUES
+    (1, 'ACCOUNT_DEFAULT_PASSWORD', '123456', 0, now(), now());
+
+-- ======== ======== ======== ========
 -- module
 -- ======== ======== ======== ========
 INSERT INTO e_platform_module (id_, name_, icon_, ordinal_, deleted_, created_, updated_) VALUES

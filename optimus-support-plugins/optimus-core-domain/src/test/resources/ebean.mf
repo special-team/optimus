@@ -1,1 +1,1 @@
-entity-packages: test.sample.entity
+entity-packages: assist.sample.entity

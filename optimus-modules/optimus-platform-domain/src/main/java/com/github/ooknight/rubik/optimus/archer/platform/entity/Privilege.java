@@ -9,6 +9,8 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.util.Set;
 
@@ -18,12 +20,14 @@ import java.util.Set;
 @Table(name = "e_platform_privilege")
 public class Privilege extends UEntity {
 
-    @Column(name = "role_")
+    @ManyToOne
+    @JoinColumn(name = "group_id_")
     @JSONField(ordinal = 101)
-    private Long role;
-    @Column(name = "group_")
+    private Group group;
+    @ManyToOne
+    @JoinColumn(name = "role_id_")
     @JSONField(ordinal = 102)
-    private Long group;
+    private Role role;
     @Column(name = "entity_")
     @JSONField(ordinal = 103)
     private Class entity;

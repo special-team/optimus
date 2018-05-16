@@ -1,4 +1,4 @@
-package test.sample.entity;
+package assist.sample.entity;
 
 import com.github.ooknight.rubik.core.entity.UEntity;
 

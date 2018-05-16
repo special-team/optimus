@@ -9,7 +9,7 @@ import org.junit.rules.ExpectedException;
 
 import java.time.LocalDate;
 
-public class WebTest {
+public class UpperCaseTest {
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
