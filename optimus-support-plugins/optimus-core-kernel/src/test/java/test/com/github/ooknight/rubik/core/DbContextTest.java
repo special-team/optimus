@@ -1,17 +1,16 @@
 package test.com.github.ooknight.rubik.core;
 
+import assist.sample.entity.Sample;
+import assist.sample.entity.query.QSample;
+
 import com.github.ooknight.rubik.core.kernel.DBContext;
 import com.github.ooknight.rubik.core.session.Scope;
 import com.github.ooknight.rubik.optimus.kernel.KernelAutoConfiguration;
 import com.github.ooknight.rubik.support.mocker.Mock;
 
-import assist.sample.entity.Sample;
-import assist.sample.entity.query.QSample;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -19,7 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.annotation.Resource;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {KernelAutoConfiguration.class, DataSourceAutoConfiguration.class, CacheAutoConfiguration.class})
+@SpringBootTest(classes = KernelAutoConfiguration.class)
 @ActiveProfiles("develop")
 public class DbContextTest {
 
@@ -36,6 +35,7 @@ public class DbContextTest {
     @Test
     public void testUpdate() {
         Sample s = Mock.mock(Sample.class);
+        s.setId(1L);
         db.update(s);
         db.update(Sample.class).set("mail", "uuuu").where().idEq(1L).update();
     }

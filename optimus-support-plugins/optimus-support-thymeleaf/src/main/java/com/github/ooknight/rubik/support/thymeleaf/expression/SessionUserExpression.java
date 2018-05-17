@@ -1,8 +1,9 @@
 package com.github.ooknight.rubik.support.thymeleaf.expression;
 
-import org.springframework.security.core.context.SecurityContextHolder;
 import com.github.ooknight.rubik.core.session.Scope;
 import com.github.ooknight.rubik.core.session.SessionUser;
+
+import org.springframework.security.core.context.SecurityContextHolder;
 
 public class SessionUserExpression {
 

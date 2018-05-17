@@ -1,12 +1,13 @@
 package test.optimus;
 
+import assist.sample.entity.Sample;
+import assist.sample.entity.query.QSample;
+
 import com.github.ooknight.rubik.core.entity.Active;
 import com.github.ooknight.rubik.core.session.AccountType;
 import com.github.ooknight.rubik.core.session.Menu;
 import com.github.ooknight.rubik.core.session.Scope;
 
-import assist.sample.entity.Sample;
-import assist.sample.entity.query.QSample;
 import io.ebean.Ebean;
 import io.ebean.Query;
 import io.ebean.annotation.EnumValue;

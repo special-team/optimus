@@ -4,6 +4,7 @@ import optimus.SQL;
 import com.github.ooknight.rubik.core.entity.UEntity;
 import com.github.ooknight.rubik.core.session.Scope;
 
+import com.google.common.base.Preconditions;
 import io.ebean.EbeanServer;
 import io.ebean.PagedList;
 import io.ebean.Query;
@@ -16,10 +17,10 @@ import java.util.Optional;
 
 public class DBContext {
 
-    private final EbeanServer server;
+    private final EbeanServer ebean;
 
-    public DBContext(EbeanServer server) {
-        this.server = server;
+    public DBContext(EbeanServer ebean) {
+        this.ebean = ebean;
     }
 
     /*
@@ -27,22 +28,23 @@ public class DBContext {
     */
 
     public <E extends UEntity> void insert(E entity) {
-        server.insert(entity);
+        ebean.insert(entity);
     }
 
     public void delete(Class<? extends UEntity> clazz, Long id) {
-        server.deletePermanent(clazz, id);
+        ebean.deletePermanent(clazz, id);
     }
 
     public <E extends UEntity> void update(E entity) {
-        server.update(entity);
+        Preconditions.checkNotNull(ebean.getBeanId(entity), "id is null when update : %s", entity);
+        ebean.update(entity);
     }
 
     public <E extends UEntity> UpdateQuery update(Class<E> clazz) {
         /// use UpdateQuery<E>, do not use Update
-        //O - UpdateQuery<E> :::: server.update(clazz).set("property", "new").where().idEq(1).update();
-        //X - Update<E> :::: server.createUpdate(clazz, "update table set column=:new where id=:id").set("column", "new").set("id", 1).execute();
-        return server.update(clazz);
+        //O - UpdateQuery<E> :::: ebean.update(clazz).set("property", "new").where().idEq(1).update();
+        //X - Update<E> :::: ebean.createUpdate(clazz, "update table set column=:new where id=:id").set("column", "new").set("id", 1).execute();
+        return ebean.update(clazz);
     }
 
     public <E extends UEntity> Optional<E> getone(Class<E> clazz, Long id, String... fetchs) {
@@ -78,7 +80,7 @@ public class DBContext {
     }
 
     public <E extends UEntity> Query<E> createQuery(Class<E> clazz, String... fetchs) {
-        Query<E> query = server.createQuery(clazz).setDisableLazyLoading(SQL.DEFAULT_DISABLE_LAZY_LOADING);
+        Query<E> query = ebean.createQuery(clazz).setDisableLazyLoading(SQL.DEFAULT_DISABLE_LAZY_LOADING);
         for (String f : fetchs) {
             query.fetch(f);
         }
@@ -86,7 +88,7 @@ public class DBContext {
     }
 
     public <E extends UEntity> Query<E> createQuery(Class<E> clazz, Scope scope, String... fetchs) {
-        Query<E> query = server.createQuery(clazz).setDisableLazyLoading(SQL.DEFAULT_DISABLE_LAZY_LOADING).where(scope.expression(clazz));
+        Query<E> query = ebean.createQuery(clazz).setDisableLazyLoading(SQL.DEFAULT_DISABLE_LAZY_LOADING).where(scope.expression(clazz));
         for (String f : fetchs) {
             query.fetch(f);
         }
@@ -111,6 +113,6 @@ public class DBContext {
     }
 
     public <E> Query<E> createNamedQuery(Class<E> clazz, String namedQuery) {
-        return server.createNamedQuery(clazz, namedQuery).setDisableLazyLoading(SQL.DEFAULT_DISABLE_LAZY_LOADING);
+        return ebean.createNamedQuery(clazz, namedQuery).setDisableLazyLoading(SQL.DEFAULT_DISABLE_LAZY_LOADING);
     }
 }

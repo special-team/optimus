@@ -28,14 +28,11 @@ INSERT INTO e_platform_account (id_, username_, password_, nickname_, role_id_, 
 -- ======== ======== ======== ========
 -- role resource
 -- ======== ======== ======== ========
--- INSERT INTO e_platform_role_resource (role_id_, function_id_) VALUES
---     (1, 111),
---     (1, 112),
---     (1, 113);
+INSERT INTO e_platform_role_resource (role_id_, function_id_) VALUES
+    (10, 111);
 
 -- ======== ======== ======== ========
 -- account resource
 -- ======== ======== ======== ========
--- INSERT INTO e_platform_account_resource VALUES (2, 111);
--- INSERT INTO e_platform_account_resource VALUES (2, 112);
--- INSERT INTO e_platform_account_resource VALUES (2, 113);
+INSERT INTO e_platform_account_resource VALUES (1011, 112);
+INSERT INTO e_platform_account_resource VALUES (1011, 113);

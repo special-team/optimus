@@ -1,5 +1,9 @@
 package com.github.ooknight.rubik.support.thymeleaf.expression;
 
+import com.google.common.base.Joiner;
+import com.google.common.base.Splitter;
+import com.google.common.base.Strings;
+import com.google.common.collect.Maps;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.thymeleaf.context.IExpressionContext;
 import org.thymeleaf.context.IWebContext;
@@ -7,12 +11,9 @@ import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 public class UserInterfaceExpression {
 
-    private static Pattern PARAMETER_LOCALE_PATTERN = Pattern.compile("^locale=.*");
-    //
     private IExpressionContext context;
     private String defaultLanguage;
 
@@ -34,17 +35,17 @@ public class UserInterfaceExpression {
     }
 
     public String uri(String locale) {
-        //String[] strs = {"x=1", "y=1", "locale=111", "xlocale=1111"};
-        //List<String> x = Lists.newArrayList(strs);
-        //boolean f = x.removeIf(PARAMETER_LOCALE_PATTERN.asPredicate());
-        //System.out.println(f);
-        //String r = StringUtils.join(x, "&");
-        //System.out.println(r);
         if (context instanceof IWebContext) {
-            final HttpServletRequest request = ((IWebContext) context).getRequest();
+            Map<String, String> params = Maps.newHashMap();
+            HttpServletRequest request = ((IWebContext) context).getRequest();
             String u1 = request.getRequestURI();
             String u2 = request.getQueryString();
-            return u1 + "?" + "locale=" + locale + (u2 == null ? "" : ("&" + PARAMETER_LOCALE_PATTERN.matcher(u2).replaceAll("")));
+            if (!Strings.isNullOrEmpty(u2)) {
+                params.putAll(Splitter.on('&').withKeyValueSeparator('=').split(u2));
+            }
+            params.put("locale", locale);
+            ///return u1 + "?" + "locale=" + locale + (u2 == null ? "" : ("&" + PARAMETER_LOCALE_PATTERN.matcher(u2).replaceAll("")));
+            return u1 + "?" + Joiner.on('&').withKeyValueSeparator('=').join(params);
         }
         return "";
     }

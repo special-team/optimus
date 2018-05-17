@@ -11,9 +11,8 @@ import com.github.ooknight.rubik.support.mocker.Mock;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
@@ -21,9 +20,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RunWith(SpringRunner.class)
-@TestPropertySource("classpath:application-develop.properties")
 @SpringBootTest(classes = PlatformAutoConfiguration.class)
-@EnableAutoConfiguration
+@ActiveProfiles("develop")
 public class PlatformServiceTest {
 
     @Resource
@@ -42,15 +40,11 @@ public class PlatformServiceTest {
         t1.setId(1L);
         t1.setName("测试U1");
         service.update(t1);
-        //
-        Group t2 = new Group();
-        t2.setName("测试U1");
-        service.update(t2);
     }
 
     @Test
     public void getoneGroup() {
-        Optional<Group> r1 = service.group(1L);
+        Optional<Group> r1 = service.group(10L);
         Assert.assertTrue(r1.isPresent());
     }
 
@@ -74,15 +68,11 @@ public class PlatformServiceTest {
         t1.setId(1L);
         t1.setName("测试U1");
         service.update(t1);
-        //
-        Role t2 = new Role();
-        t2.setName("测试U2");
-        service.update(t2);
     }
 
     @Test
     public void getoneRole() {
-        Optional<Role> r1 = service.role(1L);
+        Optional<Role> r1 = service.role(10L);
         Assert.assertTrue(r1.isPresent());
     }
 

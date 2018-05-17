@@ -7,7 +7,6 @@ import com.github.ooknight.rubik.optimus.kernel.platform.PlatformAutoConfigurati
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -18,7 +17,6 @@ import java.util.Set;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = PlatformAutoConfiguration.class)
-@EnableAutoConfiguration
 @ActiveProfiles("develop")
 public class SecurityUserServiceTest {
 
@@ -30,7 +28,7 @@ public class SecurityUserServiceTest {
         Optional<Account> a1 = service.getAccount("admin");
         Assert.assertTrue(a1.isPresent());
         //
-        Optional<Account> a2 = service.getAccount("cat");
+        Optional<Account> a2 = service.getAccount("god");
         Assert.assertTrue(a2.isPresent());
         //
         Optional<Account> a3 = service.getAccount("notexist");
@@ -44,7 +42,7 @@ public class SecurityUserServiceTest {
     public void getResource() {
         Set<String> r1 = service.getResource(1L, 1L);
         Assert.assertTrue(r1.isEmpty());
-        Set<String> r2 = service.getResource(1L, 2L);
+        Set<String> r2 = service.getResource(10L, 1011L);
         Assert.assertFalse(r2.isEmpty());
         Assert.assertEquals(3, r2.size());
     }

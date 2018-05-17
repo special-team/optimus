@@ -7,9 +7,12 @@ import io.ebean.EbeanServerFactory;
 import io.ebean.config.ServerConfig;
 import io.ebean.spring.txn.SpringJdbcTransactionManager;
 import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.Import;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.annotation.Resource;
@@ -19,6 +22,7 @@ import javax.sql.DataSource;
 @EnableCaching(order = 1)
 @EnableTransactionManagement(order = 2)
 @EnableAspectJAutoProxy(proxyTargetClass = true)
+@Import({DataSourceAutoConfiguration.class, CacheAutoConfiguration.class})
 public class KernelAutoConfiguration {
 
     @Resource
