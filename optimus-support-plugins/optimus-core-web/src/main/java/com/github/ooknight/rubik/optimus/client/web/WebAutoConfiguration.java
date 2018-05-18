@@ -4,7 +4,9 @@ import optimus.TOOLKIT;
 import com.github.ooknight.rubik.core.client.BusinessEventPublisher;
 
 import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebAutoConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.format.datetime.standard.DateTimeFormatterRegistrar;
 import org.springframework.web.servlet.LocaleResolver;
@@ -17,6 +19,7 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import java.time.format.DateTimeFormatter;
 
 @SpringBootConfiguration
+@Import(SpringDataWebAutoConfiguration.class)
 public class WebAutoConfiguration implements WebMvcConfigurer {
 
     @Bean

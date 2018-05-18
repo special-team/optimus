@@ -1,7 +1,6 @@
 package test.optimus;
 
 import optimus.WEB;
-import com.github.ooknight.rubik.support.core.exception.BusinessException;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -14,6 +13,7 @@ public class UpperCaseTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
+    /*
     @Test
     public void test0() {
         thrown.expect(WEB.E404.class);
@@ -27,6 +27,7 @@ public class UpperCaseTest {
         thrown.expectMessage(BusinessException.PREFIX + "test");
         throw WEB.ERROR("test");
     }
+    */
 
     @Test
     public void test2() {

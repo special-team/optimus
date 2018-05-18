@@ -49,14 +49,6 @@ public class PlatformServiceTest {
     }
 
     @Test
-    public void browseGroup() {
-        List<Group> r1 = service.group();
-        Assert.assertFalse(r1.isEmpty());
-        List<Group> r2 = service.createGroupQuery().id.in(10L, 20L, 30L).findList();
-        Assert.assertFalse(r2.isEmpty());
-    }
-
-    @Test
     public void createRole() {
         Role t = Mock.mock(Role.class);
         service.create(t);
@@ -74,14 +66,6 @@ public class PlatformServiceTest {
     public void getoneRole() {
         Optional<Role> r1 = service.role(10L);
         Assert.assertTrue(r1.isPresent());
-    }
-
-    @Test
-    public void browseRole() {
-        List<Role> r1 = service.role();
-        Assert.assertFalse(r1.isEmpty());
-        List<Role> r2 = service.createRoleQuery().id.in(10L, 20L, 30L).findList();
-        Assert.assertFalse(r2.isEmpty());
     }
 
     @Test

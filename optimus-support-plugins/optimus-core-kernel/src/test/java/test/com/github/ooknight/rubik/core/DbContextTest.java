@@ -54,8 +54,15 @@ public class DbContextTest {
     public void testQuery() {
         System.out.println(db.createQuery(Sample.class).findList());
         System.out.println(db.createQuery(Sample.class, Scope.DUMMY()).findList());
-        System.out.println(db.createQuery(QSample.class).id.eq(1).findList());
-        System.out.println(db.createQuery(QSample.class, Scope.DUMMY()).id.eq(1).findList());
+    }
+
+    @Test
+    public void testQueryWithNull() {
+        System.out.println(db.createQuery(Sample.class).where().eq("mail", null).findList());
+        System.out.println(db.createQuery(Sample.class).where().eq("mail", "uuuu").findList());
+        System.out.println(db.createQuery(Sample.class).where().isNull("mail").findList());
+        System.out.println(new QSample().mail.equalTo(null).findList());
+        System.out.println(new QSample().mail.isNull().findList());
     }
 
     @Test

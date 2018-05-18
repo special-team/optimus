@@ -14,14 +14,24 @@ public class BusinessExceptionTest {
     @Test
     public void test1() {
         thrown.expect(BusinessException.class);
-        thrown.expectMessage(BusinessException.PREFIX + "test-error");
-        throw new BusinessException("test-error");
+        throw new BusinessException(BusinessException.Type.ENTITY_NOT_FOUND);
     }
 
     @Test
     public void test2() {
         thrown.expect(BusinessException.class);
-        thrown.expectMessage(BusinessException.PREFIX + "test-error");
-        throw new BusinessException("test-error", new NullPointerException("this is null"));
+        throw new BusinessException(BusinessException.Type.UNAUTHORIZED_ACCESS);
+    }
+
+    @Test
+    public void test3() {
+        thrown.expect(BusinessException.class);
+        throw new BusinessException(BusinessException.Type.ENTITY_NOT_FOUND, new NullPointerException("this is null"));
+    }
+
+    @Test
+    public void test4() {
+        thrown.expect(BusinessException.class);
+        throw new BusinessException(BusinessException.Type.UNAUTHORIZED_ACCESS, new NullPointerException("this is null"));
     }
 }

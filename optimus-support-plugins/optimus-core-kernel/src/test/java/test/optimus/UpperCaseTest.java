@@ -16,12 +16,17 @@ public class UpperCaseTest {
     @Test
     public void test1() {
         thrown.expect(BusinessException.class);
-        thrown.expectMessage(BusinessException.PREFIX + "test-error");
-        throw KERNEL.ERROR("test-error");
+        throw KERNEL.ERROR(BusinessException.Type.ENTITY_NOT_FOUND);
     }
 
     @Test
-    public void test() {
+    public void test2() {
+        thrown.expect(RuntimeException.class);
+        KERNEL.PROPAGATE(new ClassNotFoundException());
+    }
+
+    @Test
+    public void test3() {
         System.out.println(SQL.NOW());
         System.out.println(SQL.CURRENT_DATE());
         //noinspection ConstantConditions

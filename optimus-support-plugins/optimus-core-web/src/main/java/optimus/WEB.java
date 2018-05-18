@@ -1,10 +1,6 @@
 package optimus;
 
-import com.github.ooknight.rubik.support.core.exception.BusinessException;
-
 import com.google.common.collect.Lists;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -35,6 +31,7 @@ public final class WEB {
         return r;
     }
 
+    /*
     public static E404 ERROR_HTTP_404() {
         return new E404();
     }
@@ -58,4 +55,5 @@ public final class WEB {
             super(key);
         }
     }
+    */
 }

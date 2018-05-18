@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.text.DateFormat;
+import java.text.MessageFormat;
 import java.time.DayOfWeek;
 import java.time.format.TextStyle;
 import java.util.Date;
@@ -42,6 +43,11 @@ public class Scattered {
                     d.getDisplayName(style, Locale.CHINESE), d.getDisplayName(style, Locale.ENGLISH), d.getDisplayName(style, Locale.KOREAN));
             }
         }
+    }
+
+    @Test
+    public void testI18n() {
+        System.out.println(MessageFormat.format("the number is {1}", 1, 2, 3));
     }
 }
 

@@ -1,6 +1,7 @@
 package com.github.ooknight.rubik.optimus.kernel.platform.service.impl;
 
 import com.github.ooknight.rubik.core.kernel.DBContext;
+import com.github.ooknight.rubik.core.query.QueryEngine;
 import com.github.ooknight.rubik.optimus.archer.platform.entity.Account;
 import com.github.ooknight.rubik.optimus.archer.platform.entity.Function;
 import com.github.ooknight.rubik.optimus.archer.platform.entity.Privilege;
@@ -23,7 +24,7 @@ public class SecurityUserServiceImpl implements SecurityUserService {
 
     @Override
     public Optional<Account> getAccount(String username) {
-        return db.createQuery(QAccount.class).role.fetch().group.fetch().username.equalTo(username).findOneOrEmpty();
+        return QueryEngine.build(QAccount.class).role.fetch().group.fetch().username.equalTo(username).findOneOrEmpty();
     }
 
     @Override

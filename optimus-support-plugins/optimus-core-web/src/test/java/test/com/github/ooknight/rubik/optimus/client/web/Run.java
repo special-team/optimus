@@ -47,7 +47,7 @@ public class Run {
     }
 
     @Test
-    public void test3() throws Exception {
+    public void testWithI18n() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/demo").param("locale", "en").param("key", "demo"))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andExpect(MockMvcResultMatchers.content().string("demo"))
@@ -55,6 +55,17 @@ public class Run {
         mvc.perform(MockMvcRequestBuilders.get("/demo").param("locale", "zh").param("key", "demo"))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andExpect(MockMvcResultMatchers.content().string("演示"))
+            .andDo(MockMvcResultHandlers.print());
+    }
+
+    @Test
+    public void testPage() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/page")
+            //.param("page", "9")
+            //.param("size", "90")
+        )
+            .andExpect(MockMvcResultMatchers.status().isOk())
+            .andExpect(MockMvcResultMatchers.content().string("ok"))
             .andDo(MockMvcResultHandlers.print());
     }
 }

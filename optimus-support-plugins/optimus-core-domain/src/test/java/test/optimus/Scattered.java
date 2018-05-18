@@ -4,21 +4,29 @@ import assist.sample.entity.Sample;
 import assist.sample.entity.query.QSample;
 
 import com.github.ooknight.rubik.core.entity.Active;
+import com.github.ooknight.rubik.core.query.QueryEngine;
 import com.github.ooknight.rubik.core.session.AccountType;
 import com.github.ooknight.rubik.core.session.Menu;
 import com.github.ooknight.rubik.core.session.Scope;
+import com.github.ooknight.rubik.support.core.exception.BusinessException;
 
 import io.ebean.Ebean;
 import io.ebean.Query;
 import io.ebean.annotation.EnumValue;
 import org.junit.Assert;
 import org.junit.Ignore;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.springframework.core.annotation.AnnotationUtils;
 
 import java.util.List;
+import java.util.Optional;
 
 public class Scattered {
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Test
     @Ignore
@@ -89,5 +97,24 @@ public class Scattered {
         Sample sample = query.id.eq(1).findOne();
         Assert.assertNotNull(sample);
         System.out.println(sample);
+    }
+
+    @Test
+    public void test3() {
+        List<Sample> r1 = QueryEngine.build(QSample.class).id.eq(1).findList();
+        System.out.println(r1);
+        List<Sample> r2 = QueryEngine.build(QSample.class, Scope.DUMMY()).id.eq(1).findList();
+        System.out.println(r2);
+    }
+
+    @Test
+    public void test4() {
+        Optional<Sample> r1 = QueryEngine.SELECT(Sample.class, 1L);
+        System.out.println(r1);
+        Sample r2 = QueryEngine.GETONE(Sample.class, 1L);
+        System.out.println(r2);
+        thrown.expect(BusinessException.class);
+        Sample r3 = QueryEngine.GETONE(Sample.class, 999L);
+        System.out.println(r3);
     }
 }

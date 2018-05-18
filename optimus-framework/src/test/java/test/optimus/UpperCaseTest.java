@@ -45,4 +45,9 @@ public class UpperCaseTest {
     public void toJsonString() {
         System.out.println(TOOLKIT.TO_JSON_STRING(1));
     }
+
+    @Test
+    public void message() {
+        System.out.println(TOOLKIT.MESSAGE("the numbers is %s, %s, %s", 1, 2, 3));
+    }
 }

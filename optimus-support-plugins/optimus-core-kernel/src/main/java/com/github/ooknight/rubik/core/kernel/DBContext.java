@@ -9,9 +9,7 @@ import io.ebean.EbeanServer;
 import io.ebean.PagedList;
 import io.ebean.Query;
 import io.ebean.UpdateQuery;
-import io.ebean.typequery.TQRootBean;
 
-import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.Optional;
 
@@ -95,6 +93,7 @@ public class DBContext {
         return query;
     }
 
+    /*
     public <E extends UEntity, Q extends TQRootBean<E, Q>> Q createQuery(Class<Q> clazz, Scope scope) {
         Q query = createQuery(clazz);
         if (scope != null) {
@@ -111,6 +110,7 @@ public class DBContext {
             throw new RuntimeException("error when create query for " + clazz, e);
         }
     }
+    */
 
     public <E> Query<E> createNamedQuery(Class<E> clazz, String namedQuery) {
         return ebean.createNamedQuery(clazz, namedQuery).setDisableLazyLoading(SQL.DEFAULT_DISABLE_LAZY_LOADING);

@@ -46,6 +46,7 @@ public class KernelAutoConfiguration {
         config.setDatabaseBooleanTrue("1");
         config.setDatabaseBooleanFalse("0");
         config.setSlowQueryMillis(3000L);
+        config.setExpressionEqualsWithNullAsNoop(true);
         config.setSlowQueryListener(new LoggingSlowQueryListener());
         return new DBContext(EbeanServerFactory.create(config));
     }

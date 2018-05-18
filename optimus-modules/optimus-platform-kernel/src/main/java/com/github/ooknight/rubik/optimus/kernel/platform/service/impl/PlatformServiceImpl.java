@@ -47,11 +47,6 @@ public class PlatformServiceImpl implements PlatformService {
     }
 
     @Override
-    public QAccount createAccountQuery() {
-        return db.createQuery(QAccount.class);
-    }
-
-    @Override
     public void create(Group group) {
         db.insert(group);
     }
@@ -72,11 +67,6 @@ public class PlatformServiceImpl implements PlatformService {
     }
 
     @Override
-    public QGroup createGroupQuery() {
-        return db.createQuery(QGroup.class);
-    }
-
-    @Override
     public void create(Role role) {
         db.insert(role);
     }
@@ -94,11 +84,6 @@ public class PlatformServiceImpl implements PlatformService {
     @Override
     public List<Role> role() {
         return db.select(Role.class);
-    }
-
-    @Override
-    public QRole createRoleQuery() {
-        return db.createQuery(QRole.class);
     }
 
     @Cacheable("menu")
@@ -122,10 +107,5 @@ public class PlatformServiceImpl implements PlatformService {
     @Override
     public void changeAccountPassword(Long accountId, String password) {
         db.update(Account.class).set("password", password).where().idEq(accountId).update();
-    }
-
-    @Override
-    public QSetting createSettingQuery() {
-        return db.createQuery(QSetting.class);
     }
 }

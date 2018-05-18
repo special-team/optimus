@@ -1,8 +1,11 @@
 package assist.sample.controller;
 
 import optimus.TOOLKIT;
+import optimus.WEB;
 import com.github.ooknight.rubik.core.client.BusinessEventPublisher;
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,5 +44,14 @@ public class SampleController {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         RequestContext requestContext = new RequestContext(request);
         return requestContext.getMessage(key);
+    }
+
+    @GetMapping("/page")
+    public String page(Pageable pageable) {
+        System.out.println(pageable);
+        System.out.println(pageable.getOffset());
+        System.out.println(pageable.getPageNumber());
+        System.out.println(pageable.getPageSize());
+        return "ok";
     }
 }
