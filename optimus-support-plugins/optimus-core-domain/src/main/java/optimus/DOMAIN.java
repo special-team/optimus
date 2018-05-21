@@ -8,7 +8,7 @@ public final class DOMAIN {
     private DOMAIN() {
     }
 
-    public static <E extends UEntity> BusinessException ENTITY_NOT_FOUND(Class<E> clazz, Long id) {
-        return new BusinessException(BusinessException.Type.ENTITY_NOT_FOUND, clazz, id);
+    public static <E extends UEntity> BusinessException ENTITY_NOT_FOUND(Class<E> clazz, Object param) {
+        return new BusinessException(BusinessException.Type.ENTITY_NOT_FOUND, clazz, param);
     }
 }

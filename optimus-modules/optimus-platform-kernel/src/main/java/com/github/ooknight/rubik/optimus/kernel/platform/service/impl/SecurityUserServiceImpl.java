@@ -6,6 +6,7 @@ import com.github.ooknight.rubik.optimus.archer.platform.entity.Account;
 import com.github.ooknight.rubik.optimus.archer.platform.entity.Function;
 import com.github.ooknight.rubik.optimus.archer.platform.entity.Privilege;
 import com.github.ooknight.rubik.optimus.archer.platform.entity.query.QAccount;
+import com.github.ooknight.rubik.optimus.archer.platform.entity.query.QPrivilege;
 import com.github.ooknight.rubik.optimus.archer.platform.service.SecurityUserService;
 
 import com.google.common.collect.Sets;
@@ -45,13 +46,16 @@ public class SecurityUserServiceImpl implements SecurityUserService {
     @Override
     public Set<Privilege> getPrivilege(Long role, Long group) {
         if (role != null && group != null) {
-            return db.createQuery(Privilege.class).where().or().eq("role.id", role).eq("group.id", group).endOr().findSet();
+            return Sets.newHashSet(QueryEngine.QUERY(QPrivilege.class).or().role.id.equalTo(role).group.id.equalTo(group).endOr().findList());
+            /// return db.createQuery(Privilege.class).where().or().eq("role.id", role).eq("group.id", group).endOr().findSet();
         }
         if (role != null) {
-            return db.createQuery(Privilege.class).where().eq("role.id", role).findSet();
+            return Sets.newHashSet(QueryEngine.QUERY(QPrivilege.class).role.id.equalTo(role).findList());
+            /// return db.createQuery(Privilege.class).where().eq("role.id", role).findSet();
         }
         if (group != null) {
-            return db.createQuery(Privilege.class).where().eq("group.id", group).findSet();
+            return Sets.newHashSet(QueryEngine.QUERY(QPrivilege.class).group.id.equalTo(group).findList());
+            /// return db.createQuery(Privilege.class).where().eq("group.id", group).findSet();
         }
         return Sets.newHashSet();
     }

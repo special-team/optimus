@@ -1,5 +1,6 @@
 package test.com.github.ooknight.rubik.optimus.kernel.platform.service;
 
+import optimus.JUNIT;
 import com.github.ooknight.rubik.optimus.archer.platform.entity.Account;
 import com.github.ooknight.rubik.optimus.archer.platform.service.SecurityUserService;
 import com.github.ooknight.rubik.optimus.kernel.platform.PlatformAutoConfiguration;
@@ -17,7 +18,7 @@ import java.util.Set;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = PlatformAutoConfiguration.class)
-@ActiveProfiles("develop")
+@ActiveProfiles(JUNIT.SPRING_PROFILE)
 public class SecurityUserServiceTest {
 
     @Resource

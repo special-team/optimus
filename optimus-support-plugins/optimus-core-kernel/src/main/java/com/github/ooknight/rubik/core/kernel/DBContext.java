@@ -2,16 +2,11 @@ package com.github.ooknight.rubik.core.kernel;
 
 import optimus.SQL;
 import com.github.ooknight.rubik.core.entity.UEntity;
-import com.github.ooknight.rubik.core.session.Scope;
 
 import com.google.common.base.Preconditions;
 import io.ebean.EbeanServer;
-import io.ebean.PagedList;
 import io.ebean.Query;
 import io.ebean.UpdateQuery;
-
-import java.util.List;
-import java.util.Optional;
 
 public class DBContext {
 
@@ -45,6 +40,7 @@ public class DBContext {
         return ebean.update(clazz);
     }
 
+    /*
     public <E extends UEntity> Optional<E> getone(Class<E> clazz, Long id, String... fetchs) {
         return createQuery(clazz, fetchs).setId(id).findOneOrEmpty();
     }
@@ -61,17 +57,7 @@ public class DBContext {
         return createQuery(clazz, scope, fetchs).findList();
     }
 
-    /**
-     * page select
-     *
-     * @param clazz  clazz
-     * @param scope  scope
-     * @param index  index (start at 1)
-     * @param size   size
-     * @param fetchs fetchs
-     * @param <E>    E
-     * @return result
-     */
+
     public <E extends UEntity> PagedList<E> select(Class<E> clazz, Scope scope, int index, int size, String... fetchs) {
         int offset = (index - 1) * size;
         return createQuery(clazz, scope, fetchs).setMaxRows(size).setFirstRow(offset).findPagedList();
@@ -93,7 +79,6 @@ public class DBContext {
         return query;
     }
 
-    /*
     public <E extends UEntity, Q extends TQRootBean<E, Q>> Q createQuery(Class<Q> clazz, Scope scope) {
         Q query = createQuery(clazz);
         if (scope != null) {

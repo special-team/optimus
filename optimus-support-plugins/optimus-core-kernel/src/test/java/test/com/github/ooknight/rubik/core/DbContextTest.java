@@ -3,8 +3,8 @@ package test.com.github.ooknight.rubik.core;
 import assist.sample.entity.Sample;
 import assist.sample.entity.query.QSample;
 
+import optimus.JUNIT;
 import com.github.ooknight.rubik.core.kernel.DBContext;
-import com.github.ooknight.rubik.core.session.Scope;
 import com.github.ooknight.rubik.optimus.kernel.KernelAutoConfiguration;
 import com.github.ooknight.rubik.support.mocker.Mock;
 
@@ -19,7 +19,7 @@ import javax.annotation.Resource;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = KernelAutoConfiguration.class)
-@ActiveProfiles("develop")
+@ActiveProfiles(JUNIT.SPRING_PROFILE)
 public class DbContextTest {
 
     @Resource
@@ -42,25 +42,25 @@ public class DbContextTest {
 
     @Test
     public void testSelect() {
-        System.out.println(db.select(Sample.class));
-        System.out.println(db.select(Sample.class, Scope.DUMMY()));
-        System.out.println(db.select(Sample.class, Scope.DUMMY(), 1, 1).getList());
-        System.out.println(db.select(Sample.class, Scope.DUMMY(), 1, 1).getTotalCount());
-        System.out.println(db.getone(Sample.class, 1L));
-        System.out.println(db.getone(Sample.class, 1L, Scope.DUMMY()));
+        //System.out.println(db.select(Sample.class));
+        //System.out.println(db.select(Sample.class, Scope.DUMMY()));
+        //System.out.println(db.select(Sample.class, Scope.DUMMY(), 1, 1).getList());
+        //System.out.println(db.select(Sample.class, Scope.DUMMY(), 1, 1).getTotalCount());
+        //System.out.println(db.getone(Sample.class, 1L));
+        //System.out.println(db.getone(Sample.class, 1L, Scope.DUMMY()));
     }
 
     @Test
     public void testQuery() {
-        System.out.println(db.createQuery(Sample.class).findList());
-        System.out.println(db.createQuery(Sample.class, Scope.DUMMY()).findList());
+        //System.out.println(db.createQuery(Sample.class).findList());
+        //System.out.println(db.createQuery(Sample.class, Scope.DUMMY()).findList());
     }
 
     @Test
     public void testQueryWithNull() {
-        System.out.println(db.createQuery(Sample.class).where().eq("mail", null).findList());
-        System.out.println(db.createQuery(Sample.class).where().eq("mail", "uuuu").findList());
-        System.out.println(db.createQuery(Sample.class).where().isNull("mail").findList());
+        //System.out.println(db.createQuery(Sample.class).where().eq("mail", null).findList());
+        //System.out.println(db.createQuery(Sample.class).where().eq("mail", "uuuu").findList());
+        //System.out.println(db.createQuery(Sample.class).where().isNull("mail").findList());
         System.out.println(new QSample().mail.equalTo(null).findList());
         System.out.println(new QSample().mail.isNull().findList());
     }

@@ -6,12 +6,9 @@ import com.github.ooknight.rubik.optimus.archer.platform.entity.Function;
 import com.github.ooknight.rubik.optimus.archer.platform.entity.Group;
 import com.github.ooknight.rubik.optimus.archer.platform.entity.Module;
 import com.github.ooknight.rubik.optimus.archer.platform.entity.Role;
-import com.github.ooknight.rubik.optimus.archer.platform.entity.query.QAccount;
-import com.github.ooknight.rubik.optimus.archer.platform.entity.query.QGroup;
-import com.github.ooknight.rubik.optimus.archer.platform.entity.query.QRole;
+import com.github.ooknight.rubik.optimus.archer.platform.entity.Setting;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface PlatformService extends IService {
 
@@ -19,29 +16,19 @@ public interface PlatformService extends IService {
 
     void update(Account account);
 
-    Optional<Account> account(Long id);
-
-    List<Account> account();
-
     void create(Group group);
 
     void update(Group group);
-
-    Optional<Group> group(Long id);
-
-    List<Group> group();
 
     void create(Role role);
 
     void update(Role role);
 
-    Optional<Role> role(Long id);
-
-    List<Role> role();
-
     List<Module> menu();
 
     List<Function> shortcut();
+
+    String setting(Setting.KEY key);
 
     void changeAccountPassword(Long accountId, String password);
 }

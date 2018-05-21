@@ -2,6 +2,7 @@ package test.com.github.ooknight.rubik.optimus.client.web;
 
 import assist.sample.controller.SampleController;
 
+import optimus.JUNIT;
 import com.github.ooknight.rubik.optimus.client.web.WebAutoConfiguration;
 
 import org.junit.Test;
@@ -24,7 +25,7 @@ import javax.annotation.Resource;
 @ContextConfiguration(classes = WebAutoConfiguration.class)
 @WebMvcTest(controllers = SampleController.class, secure = false)
 @ComponentScan(value = "assist.sample", excludeFilters = @ComponentScan.Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class))
-@ActiveProfiles("develop")
+@ActiveProfiles(JUNIT.SPRING_PROFILE)
 public class Run {
 
     @Resource

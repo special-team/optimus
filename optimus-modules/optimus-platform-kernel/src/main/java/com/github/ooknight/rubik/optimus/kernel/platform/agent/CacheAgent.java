@@ -1,14 +1,11 @@
 package com.github.ooknight.rubik.optimus.kernel.platform.agent;
 
-import com.github.ooknight.rubik.core.kernel.annotation.Agent;
-
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 
 import javax.annotation.Resource;
 import java.util.Collection;
 
-@Agent
 @Deprecated
 public class CacheAgent {
 
