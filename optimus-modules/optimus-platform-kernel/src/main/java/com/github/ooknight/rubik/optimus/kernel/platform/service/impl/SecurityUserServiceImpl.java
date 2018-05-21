@@ -24,7 +24,7 @@ public class SecurityUserServiceImpl implements SecurityUserService {
 
     @Override
     public Optional<Account> getAccount(String username) {
-        return QueryEngine.build(QAccount.class).role.fetch().group.fetch().username.equalTo(username).findOneOrEmpty();
+        return QueryEngine.QUERY(QAccount.class).role.fetch().group.fetch().username.equalTo(username).findOneOrEmpty();
     }
 
     @Override

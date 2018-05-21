@@ -1,8 +1,5 @@
 package test.optimus;
 
-import assist.sample.entity.Sample;
-import assist.sample.entity.query.QSample;
-
 import com.github.ooknight.rubik.core.entity.Active;
 import com.github.ooknight.rubik.core.query.QueryEngine;
 import com.github.ooknight.rubik.core.session.AccountType;
@@ -10,6 +7,8 @@ import com.github.ooknight.rubik.core.session.Menu;
 import com.github.ooknight.rubik.core.session.Scope;
 import com.github.ooknight.rubik.support.core.exception.BusinessException;
 
+import assist.sample.entity.Sample;
+import assist.sample.entity.query.QSample;
 import io.ebean.Ebean;
 import io.ebean.Query;
 import io.ebean.annotation.EnumValue;
@@ -101,9 +100,9 @@ public class Scattered {
 
     @Test
     public void test3() {
-        List<Sample> r1 = QueryEngine.build(QSample.class).id.eq(1).findList();
+        List<Sample> r1 = QueryEngine.QUERY(QSample.class).id.eq(1).findList();
         System.out.println(r1);
-        List<Sample> r2 = QueryEngine.build(QSample.class, Scope.DUMMY()).id.eq(1).findList();
+        List<Sample> r2 = QueryEngine.QUERY(QSample.class, Scope.DUMMY()).id.eq(1).findList();
         System.out.println(r2);
     }
 
