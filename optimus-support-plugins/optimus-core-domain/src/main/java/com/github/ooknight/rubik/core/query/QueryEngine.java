@@ -34,14 +34,6 @@ public class QueryEngine {
         }
     }
 
-    public static <E extends UEntity> E GETONE(final Class<E> clazz, final Long id) {
-        return createQuery(clazz).setId(id).findOneOrEmpty().orElseThrow(() -> DOMAIN.ENTITY_NOT_FOUND(clazz, id));
-    }
-
-    public static <E extends UEntity> E GETONE(final Class<E> clazz, final Scope scope, final Long id) {
-        return createQuery(clazz, scope).setId(id).findOneOrEmpty().orElseThrow(() -> DOMAIN.ENTITY_NOT_FOUND(clazz, id));
-    }
-
     public static <E extends UEntity> Optional<E> SELECT(final Class<E> clazz, final Long id) {
         return createQuery(clazz).setId(id).findOneOrEmpty();
     }
@@ -56,6 +48,14 @@ public class QueryEngine {
 
     public static <E extends UEntity> List<E> SELECT(final Class<E> clazz, final Scope scope) {
         return createQuery(clazz, scope).findList();
+    }
+
+    public static <E extends UEntity> E GETONE(final Class<E> clazz, final Long id) {
+        return createQuery(clazz).setId(id).findOneOrEmpty().orElseThrow(() -> DOMAIN.ENTITY_NOT_FOUND(clazz, id));
+    }
+
+    public static <E extends UEntity> E GETONE(final Class<E> clazz, final Scope scope, final Long id) {
+        return createQuery(clazz, scope).setId(id).findOneOrEmpty().orElseThrow(() -> DOMAIN.ENTITY_NOT_FOUND(clazz, id));
     }
 
     /*

@@ -21,7 +21,6 @@ import org.junit.rules.ExpectedException;
 import org.springframework.core.annotation.AnnotationUtils;
 
 import java.util.List;
-import java.util.Optional;
 
 public class Scattered {
 
@@ -109,12 +108,16 @@ public class Scattered {
 
     @Test
     public void test4() {
-        Optional<Sample> r1 = QueryEngine.SELECT(Sample.class, 1L);
-        System.out.println(r1);
-        Sample r2 = QueryEngine.GETONE(Sample.class, 1L);
-        System.out.println(r2);
+        System.out.println(QueryEngine.SELECT(Sample.class, 1L));
+        System.out.println(QueryEngine.SELECT(Sample.class, Scope.DUMMY(), 1L));
+        System.out.println(QueryEngine.SELECT(Sample.class));
+        System.out.println(QueryEngine.SELECT(Sample.class, Scope.DUMMY()));
+    }
+
+    @Test
+    public void test5() {
+        System.out.println(QueryEngine.GETONE(Sample.class, 1L));
         thrown.expect(BusinessException.class);
-        Sample r3 = QueryEngine.GETONE(Sample.class, 999L);
-        System.out.println(r3);
+        System.out.println(QueryEngine.GETONE(Sample.class, Scope.DUMMY(), 1L));
     }
 }

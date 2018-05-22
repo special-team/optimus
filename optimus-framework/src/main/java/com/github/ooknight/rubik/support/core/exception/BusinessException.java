@@ -1,36 +1,22 @@
 package com.github.ooknight.rubik.support.core.exception;
 
-import com.google.common.base.MoreObjects;
+import optimus.TOOLKIT;
+
+import com.google.common.collect.ImmutableList;
 
 public class BusinessException extends RuntimeException {
 
-    public static final String PREFIX = "exception.business.";
-    //
-    private Type key;
-    private Object[] args;
+    /* public static final String PREFIX = "exception.business."; */
 
-    public BusinessException(Type key, Object... args) {
-        super(key.toString());
-        this.key = key;
-        this.args = args;
+    public BusinessException(Enum<? extends BusinessExceptionType> key, Object... args) {
+        super(TOOLKIT.MESSAGE("BUSINESS_EXCEPTION.%s:%s", key, ImmutableList.copyOf(args)));
     }
 
-    public BusinessException(Type key, Throwable cause, Object... args) {
-        super(key.toString(), cause);
-        this.key = key;
-        this.args = args;
+    public BusinessException(Enum<? extends BusinessExceptionType> key, Throwable cause, Object... args) {
+        super(TOOLKIT.MESSAGE("BUSINESS_EXCEPTION.%s:%s", key, ImmutableList.copyOf(args)), cause);
     }
 
-    @Override
-    public String toString() {
-        return MoreObjects.toStringHelper(this)
-            .add("key", key)
-            .add("args", args)
-            .toString();
-    }
-
-    public enum Type {
-        ENTITY_NOT_FOUND,
-        UNAUTHORIZED_ACCESS
+    public enum Type implements BusinessExceptionType {
+        ENTITY_NOT_FOUND, UNAUTHORIZED_ACCESS,
     }
 }

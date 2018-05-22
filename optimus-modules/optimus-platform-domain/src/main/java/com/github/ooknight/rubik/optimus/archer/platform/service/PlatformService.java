@@ -30,5 +30,7 @@ public interface PlatformService extends IService {
 
     String setting(Setting.KEY key);
 
+    void setting(Setting.KEY key, String value);
+
     void changeAccountPassword(Long accountId, String password);
 }

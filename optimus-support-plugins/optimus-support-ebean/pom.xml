@@ -16,6 +16,10 @@
             <artifactId>ebean</artifactId>
         </dependency>
         <dependency>
+            <groupId>io.ebean</groupId>
+            <artifactId>ebean-spring-txn</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
