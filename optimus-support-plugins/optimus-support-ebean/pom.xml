@@ -24,6 +24,10 @@
             <artifactId>slf4j-api</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.jasypt</groupId>
+            <artifactId>jasypt</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.github.ooknight.rubik</groupId>
             <artifactId>optimus-framework-testing</artifactId>
             <scope>test</scope>

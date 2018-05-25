@@ -24,7 +24,7 @@
             <!-- ========= ========= ========= ========= ========= ========= ========= ========= ========= 覆盖 -->
             <!-- none -->
             <!-- ========= ========= ========= ========= ========= ========= ========= ========= ========= 自定义 -->
-            <!-- ========= ========= ========= optimus -->
+            <!-- _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ optimus -->
             <dependency>
                 <groupId>com.github.ooknight.rubik</groupId>
                 <artifactId>optimus-framework</artifactId>
@@ -70,7 +70,7 @@
                 <artifactId>optimus-platform-domain</artifactId>
                 <version>${version.com.github.ooknight.rubik}</version>
             </dependency>
-            <!-- ========= ========= ========= ooknight ui -->
+            <!-- _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ ooknight ui -->
             <dependency>
                 <groupId>com.github.ooknight.rubik</groupId>
                 <artifactId>optimus-platform-kernel</artifactId>
@@ -106,7 +106,7 @@
                 <artifactId>vuetify</artifactId>
                 <version>1.0.17.1</version>
             </dependency>
-            <!-- ========= ========= ========= ebean orm -->
+            <!-- _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ ebean orm -->
             <dependency>
                 <groupId>io.ebean</groupId>
                 <artifactId>ebean</artifactId>
@@ -127,7 +127,7 @@
                 <artifactId>querybean-generator</artifactId>
                 <version>11.1.3</version>
             </dependency>
-            <!-- ========= ========= ========= ignite -->
+            <!-- _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ ignite -->
             <dependency>
                 <groupId>org.apache.ignite</groupId>
                 <artifactId>ignite-core</artifactId>
@@ -138,11 +138,11 @@
                 <artifactId>ignite-slf4j</artifactId>
                 <version>2.4.0</version>
             </dependency>
-            <!-- ========= ========= ========= others -->
+            <!-- _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ others -->
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
-                <version>21.0</version>
+                <version>23.0</version>
             </dependency>
             <dependency>
                 <groupId>com.alibaba</groupId>
