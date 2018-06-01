@@ -46,16 +46,13 @@ public class SecurityUserServiceImpl implements SecurityUserService {
     @Override
     public Set<Privilege> getPrivilege(Long role, Long group) {
         if (role != null && group != null) {
-            return Sets.newHashSet(QueryEngine.QUERY(QPrivilege.class).or().role.id.equalTo(role).group.id.equalTo(group).endOr().findList());
-            /// return db.createQuery(Privilege.class).where().or().eq("role.id", role).eq("group.id", group).endOr().findSet();
+            return QueryEngine.QUERY(QPrivilege.class).or().role.id.equalTo(role).group.id.equalTo(group).endOr().findSet();
         }
         if (role != null) {
-            return Sets.newHashSet(QueryEngine.QUERY(QPrivilege.class).role.id.equalTo(role).findList());
-            /// return db.createQuery(Privilege.class).where().eq("role.id", role).findSet();
+            return QueryEngine.QUERY(QPrivilege.class).role.id.equalTo(role).findSet();
         }
         if (group != null) {
-            return Sets.newHashSet(QueryEngine.QUERY(QPrivilege.class).group.id.equalTo(group).findList());
-            /// return db.createQuery(Privilege.class).where().eq("group.id", group).findSet();
+            return QueryEngine.QUERY(QPrivilege.class).group.id.equalTo(group).findSet();
         }
         return Sets.newHashSet();
     }
