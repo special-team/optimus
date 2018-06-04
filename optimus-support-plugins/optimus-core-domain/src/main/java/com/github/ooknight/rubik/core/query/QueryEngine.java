@@ -8,11 +8,13 @@ import io.ebean.Ebean;
 import io.ebean.Query;
 import io.ebean.typequery.TQRootBean;
 import lombok.NonNull;
+import lombok.experimental.UtilityClass;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.Optional;
 
+@UtilityClass
 public class QueryEngine {
 
     public static <Q extends TQRootBean<?, Q>> Q QUERY(@NonNull Class<Q> clazz) {
@@ -34,20 +36,20 @@ public class QueryEngine {
         }
     }
 
-    public static <E extends UEntity> Optional<E> SELECT(final Class<E> clazz, final Long id) {
-        return createQuery(clazz).setId(id).findOneOrEmpty();
-    }
-
-    public static <E extends UEntity> Optional<E> SELECT(final Class<E> clazz, final Scope scope, final Long id) {
-        return createQuery(clazz, scope).setId(id).findOneOrEmpty();
-    }
-
     public static <E extends UEntity> List<E> SELECT(final Class<E> clazz) {
         return createQuery(clazz).findList();
     }
 
     public static <E extends UEntity> List<E> SELECT(final Class<E> clazz, final Scope scope) {
         return createQuery(clazz, scope).findList();
+    }
+
+    public static <E extends UEntity> Optional<E> SELECT(final Class<E> clazz, final Long id) {
+        return createQuery(clazz).setId(id).findOneOrEmpty();
+    }
+
+    public static <E extends UEntity> Optional<E> SELECT(final Class<E> clazz, final Scope scope, final Long id) {
+        return createQuery(clazz, scope).setId(id).findOneOrEmpty();
     }
 
     public static <E extends UEntity> E GETONE(final Class<E> clazz, final Long id) {
@@ -67,6 +69,6 @@ public class QueryEngine {
     }
 
     private static <E extends UEntity> Query<E> createQuery(Class<E> clazz, Scope scope) {
-        return createQuery(clazz).where(scope.expression(clazz));
+        return Ebean.createQuery(clazz).setDisableLazyLoading(false).where(scope.expression(clazz));
     }
 }

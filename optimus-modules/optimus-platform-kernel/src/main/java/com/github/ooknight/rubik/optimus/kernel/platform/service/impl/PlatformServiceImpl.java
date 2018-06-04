@@ -63,7 +63,7 @@ public class PlatformServiceImpl implements PlatformService {
     @Override
     public List<Module> menu() {
         return QueryEngine.QUERY(QModule.class)
-            .function.filterMany(new QFunction().display.in(DisplayMode.MENU, DisplayMode.MENU_AND_SHORTCUT).getExpressionList())
+            .function.filterMany(QueryEngine.QUERY(QFunction.class).display.in(DisplayMode.MENU, DisplayMode.MENU_AND_SHORTCUT).getExpressionList())
             .ordinal.asc().function.ordinal.asc().findList();
     }
 

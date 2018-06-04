@@ -120,4 +120,14 @@ public class Scattered {
         thrown.expect(BusinessException.class);
         System.out.println(QueryEngine.GETONE(Sample.class, Scope.DUMMY(), 1L));
     }
+
+    @Test
+    public void test6() {
+        Sample sample = new Sample();
+        sample.setName("test");
+        sample.setMail("test@test.com");
+        Ebean.insert(sample);
+        System.out.println(Ebean.createQuery(Sample.class).findList());
+        System.out.println(Ebean.createQuery(Sample.class).where().eq("mail", "test@test.com").findList());
+    }
 }
