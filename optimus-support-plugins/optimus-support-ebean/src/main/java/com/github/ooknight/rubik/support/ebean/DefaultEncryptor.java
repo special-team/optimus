@@ -5,6 +5,8 @@ import io.ebean.config.Encryptor;
 import org.jasypt.encryption.pbe.StandardPBEByteEncryptor;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 
+import java.nio.charset.Charset;
+
 public class DefaultEncryptor implements Encryptor {
 
     @Override
@@ -25,13 +27,13 @@ public class DefaultEncryptor implements Encryptor {
     public byte[] encryptString(String formattedValue, EncryptKey key) {
         StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
         encryptor.setPassword(key.getStringValue());
-        return encryptor.encrypt(formattedValue).getBytes();
+        return encryptor.encrypt(formattedValue).getBytes(Charset.forName("UTF-8"));
     }
 
     @Override
     public String decryptString(byte[] data, EncryptKey key) {
         StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
         encryptor.setPassword(key.getStringValue());
-        return encryptor.decrypt(new String(data));
+        return encryptor.decrypt(new String(data, Charset.forName("UTF-8")));
     }
 }
