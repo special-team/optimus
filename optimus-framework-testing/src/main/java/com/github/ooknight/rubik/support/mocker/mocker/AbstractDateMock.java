@@ -5,16 +5,15 @@ import com.github.ooknight.rubik.support.mocker.MockException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public class AbstractDateMock {
+abstract class AbstractDateMock {
 
-    private static final SimpleDateFormat FORMAT = new SimpleDateFormat("yyyy-MM-dd");
-    protected Long startTime;
-    protected Long endTime;
+    Long startTime;
+    Long endTime;
 
-    public AbstractDateMock(String startTimePattern, String endTimePattern) {
+    AbstractDateMock(String startTimePattern, String endTimePattern) {
         try {
-            this.startTime = FORMAT.parse(startTimePattern).getTime();
-            this.endTime = FORMAT.parse(endTimePattern).getTime();
+            this.startTime = new SimpleDateFormat("yyyy-MM-dd").parse(startTimePattern).getTime();
+            this.endTime = new SimpleDateFormat("yyyy-MM-dd").parse(endTimePattern).getTime();
         } catch (ParseException e) {
             throw new MockException("时间格式设置错误，设置如下格式yyyy-MM-dd ", e);
         }

@@ -8,7 +8,9 @@ import io.ebean.EbeanServer;
 import io.ebean.Query;
 import io.ebean.UpdateQuery;
 
-public class DBContext {
+import java.io.Serializable;
+
+public class DBContext implements Serializable {
 
     private final EbeanServer ebean;
 
