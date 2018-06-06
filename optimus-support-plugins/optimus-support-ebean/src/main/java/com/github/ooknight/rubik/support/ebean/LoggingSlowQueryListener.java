@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 public class LoggingSlowQueryListener implements SlowQueryListener {
 
-    private final static Logger logger = LoggerFactory.getLogger(SlowQueryListener.class);
+    private static final Logger logger = LoggerFactory.getLogger(SlowQueryListener.class);
 
     @Override
     public void process(SlowQueryEvent event) {

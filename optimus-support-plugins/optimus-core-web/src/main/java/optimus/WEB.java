@@ -1,15 +1,14 @@
 package optimus;
 
 import com.google.common.collect.Lists;
+import lombok.experimental.UtilityClass;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+@UtilityClass
 public final class WEB {
-
-    private WEB() {
-    }
 
     public static <T> T PARAM(T param, T defaultValue) {
         return param == null ? defaultValue : param;

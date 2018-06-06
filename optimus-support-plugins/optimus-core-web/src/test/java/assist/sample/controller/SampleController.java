@@ -1,11 +1,9 @@
 package assist.sample.controller;
 
 import optimus.TOOLKIT;
-import optimus.WEB;
 import com.github.ooknight.rubik.core.client.BusinessEventPublisher;
 
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,7 +15,6 @@ import org.springframework.web.servlet.support.RequestContext;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 @RestController
 public class SampleController {
@@ -33,7 +30,7 @@ public class SampleController {
 
     @GetMapping(value = "/demo", params = "p")
     public String demo(@RequestParam("p") LocalDateTime param) {
-        return "parameter is " + DateTimeFormatter.ofPattern(TOOLKIT.DATE_TIME_FORMAT).format(param);
+        return "parameter is " + TOOLKIT.DATE_TIME_FORMATTER.format(param);
     }
 
     @GetMapping(value = "/demo", params = {"key"})
@@ -41,6 +38,7 @@ public class SampleController {
         //System.out.println(LocaleContextHolder.getLocale());
         //System.out.println(RequestContextUtils.getLocale(request));
         //
+        @SuppressWarnings("ConstantConditions")
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         RequestContext requestContext = new RequestContext(request);
         return requestContext.getMessage(key);

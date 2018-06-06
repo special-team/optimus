@@ -4,7 +4,7 @@ import java.util.Random;
 
 public final class RandomUtils {
 
-    private final static Random RANDOM = new Random();
+    private static final Random RANDOM = new Random();
 
     private RandomUtils() {
     }

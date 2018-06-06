@@ -1,15 +1,15 @@
 package optimus;
 
+import lombok.experimental.UtilityClass;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+@UtilityClass
 public final class SQL {
 
     public static final boolean DEFAULT_DISABLE_LAZY_LOADING = true;
-
-    private SQL() {
-    }
 
     public static LocalDate CURRENT_DATE() {
         return TOOLKIT.CURRENT_DATE();

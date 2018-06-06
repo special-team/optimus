@@ -2,19 +2,23 @@ package optimus;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import lombok.experimental.UtilityClass;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
+@UtilityClass
 public final class TOOLKIT {
 
-    public final static String DATE_FORMAT = "yyyy-MM-dd";
-    public final static String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
-    public final static String TIME_FORMAT = "HH:mm:ss";
-
-    private TOOLKIT() {
-    }
+    //public static final String DATE_FORMAT = "yyyy-MM-dd";
+    //public static final String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    //public static final String TIME_FORMAT = "HH:mm:ss";
+    //
+    public static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    public static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm:ss");
 
     public static LocalDateTime NOW() {
         return LocalDateTime.now();

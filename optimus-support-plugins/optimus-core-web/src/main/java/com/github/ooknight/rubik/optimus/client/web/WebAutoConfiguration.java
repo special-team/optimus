@@ -16,8 +16,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
-import java.time.format.DateTimeFormatter;
-
 @SpringBootConfiguration
 @Import(SpringDataWebAutoConfiguration.class)
 public class WebAutoConfiguration implements WebMvcConfigurer {
@@ -49,9 +47,9 @@ public class WebAutoConfiguration implements WebMvcConfigurer {
     @Override
     public void addFormatters(FormatterRegistry registry) {
         DateTimeFormatterRegistrar jsr310 = new DateTimeFormatterRegistrar();
-        jsr310.setDateTimeFormatter(DateTimeFormatter.ofPattern(TOOLKIT.DATE_TIME_FORMAT));
-        jsr310.setDateFormatter(DateTimeFormatter.ofPattern(TOOLKIT.DATE_FORMAT));
-        jsr310.setTimeFormatter(DateTimeFormatter.ofPattern(TOOLKIT.TIME_FORMAT));
+        jsr310.setDateTimeFormatter(TOOLKIT.DATE_TIME_FORMATTER);
+        jsr310.setDateFormatter(TOOLKIT.DATE_FORMATTER);
+        jsr310.setTimeFormatter(TOOLKIT.TIME_FORMATTER);
         jsr310.registerFormatters(registry);
     }
 }

@@ -8,17 +8,17 @@ public class UpperCaseTest {
 
     @Test
     public void dateFormat() {
-        System.out.println(TOOLKIT.DATE_FORMAT);
+        System.out.println(TOOLKIT.DATE_FORMATTER);
     }
 
     @Test
     public void dateTimeFormat() {
-        System.out.println(TOOLKIT.DATE_TIME_FORMAT);
+        System.out.println(TOOLKIT.DATE_TIME_FORMATTER);
     }
 
     @Test
     public void timeFormat() {
-        System.out.println(TOOLKIT.TIME_FORMAT);
+        System.out.println(TOOLKIT.TIME_FORMATTER);
     }
 
     @Test
