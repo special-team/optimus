@@ -13,12 +13,16 @@
     <dependencies>
         <dependency>
             <groupId>com.github.ooknight.rubik</groupId>
-            <artifactId>optimus-core-web</artifactId>
+            <artifactId>optimus-core-domain</artifactId>
         </dependency>
         <dependency>
             <groupId>com.github.ooknight.rubik</groupId>
-            <artifactId>optimus-platform-domain</artifactId>
+            <artifactId>optimus-core-web</artifactId>
         </dependency>
+        <!--<dependency>-->
+        <!--<groupId>com.github.ooknight.rubik</groupId>-->
+        <!--<artifactId>optimus-platform-domain</artifactId>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.github.ooknight.rubik</groupId>
             <artifactId>optimus-framework-testing</artifactId>
