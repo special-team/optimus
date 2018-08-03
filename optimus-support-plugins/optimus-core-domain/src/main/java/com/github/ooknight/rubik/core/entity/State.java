@@ -7,7 +7,7 @@ public interface State {
 
     default int code() {
         try {
-            String name = ((Enum<?>) this).name();
+            String name = ((Enum) this).name();
             EnumValue value = AnnotationUtil.findAnnotation(this.getClass().getDeclaredField(name), EnumValue.class);
             return Integer.parseInt(value.value());
         } catch (Exception e) {

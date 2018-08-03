@@ -3,6 +3,7 @@ package test.optimus;
 import optimus.KERNEL;
 import optimus.SQL;
 import com.github.ooknight.rubik.support.core.exception.BusinessException;
+import com.github.ooknight.rubik.support.core.exception.BusinessExceptionType;
 
 import org.jasypt.encryption.StringEncryptor;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
@@ -20,7 +21,7 @@ public class UpperCaseTest {
     @Test
     public void test1() {
         thrown.expect(BusinessException.class);
-        throw KERNEL.ERROR(BusinessException.Type.ENTITY_NOT_FOUND);
+        throw KERNEL.ERROR(BusinessExceptionType.Default.ENTITY_NOT_FOUND);
     }
 
     @Test

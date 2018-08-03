@@ -29,7 +29,7 @@ public class QueryEngine {
         try {
             Q query = clazz.newInstance().setDisableLazyLoading(false);
             Class entityClass = (Class) ((ParameterizedType) clazz.getGenericSuperclass()).getActualTypeArguments()[0];
-            query.getExpressionList().add(scope.expression(entityClass));
+            query.raw(scope.condition(entityClass).raw());
             return query;
         } catch (IllegalAccessException | InstantiationException e) {
             throw new RuntimeException("error when create bean query for " + clazz, e);
@@ -69,6 +69,6 @@ public class QueryEngine {
     }
 
     private static <E extends UEntity> Query<E> createQuery(Class<E> clazz, Scope scope) {
-        return Ebean.createQuery(clazz).setDisableLazyLoading(false).where(scope.expression(clazz));
+        return Ebean.createQuery(clazz).setDisableLazyLoading(false).where().raw(scope.condition(clazz).raw()).query();
     }
 }

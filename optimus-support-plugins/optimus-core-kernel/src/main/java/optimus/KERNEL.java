@@ -1,6 +1,7 @@
 package optimus;
 
 import com.github.ooknight.rubik.support.core.exception.BusinessException;
+import com.github.ooknight.rubik.support.core.exception.BusinessExceptionType;
 
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
@@ -9,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 @UtilityClass
 public final class KERNEL {
 
-    public static BusinessException ERROR(BusinessException.Type type) {
+    public static <T extends Enum & BusinessExceptionType> BusinessException ERROR(T type) {
         return new BusinessException(type);
     }
 

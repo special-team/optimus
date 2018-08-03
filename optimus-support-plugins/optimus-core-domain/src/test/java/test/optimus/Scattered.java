@@ -65,10 +65,47 @@ public class Scattered {
     }
 
     @Test
-    public void test0() {
+    public void testNewEntity() {
         Sample s1 = new Sample();
         Assert.assertEquals(Active.ENABLED, s1.active());
         Assert.assertEquals(1, s1.active().code());
+    }
+
+    @Test
+    public void testInsert() {
+        Sample sample = new Sample();
+        Ebean.insert(sample);
+    }
+
+    @Test
+    public void testDelete() {
+        Ebean.delete(Sample.class, 1L);
+        Ebean.deletePermanent(Sample.class, 1L);
+        Ebean.delete(new Sample());
+        Ebean.deletePermanent(new Sample());
+    }
+
+    @Test
+    public void testUpdate() {
+        Sample sample = new Sample();
+        sample.setName("test");
+        sample.setMail("hello");
+        Ebean.save(sample);
+        sample.setMail("hello@163.com");
+        Ebean.update(sample);
+        //
+        //Ebean.update(Sample.class).set("name", "hello2").where().idEq(1).update();
+        //
+        Ebean.find(Sample.class).findList().forEach(System.out::println);
+        Ebean.createSqlQuery("select * from e_sample").findList().forEach(System.out::println);
+        //
+        //Ebean.update(Sample.class).set(Sample.FIELD_MAIL, "hello").where().eq(Sample.FIELD_NAME, "sample1").update();
+        //System.out.println(Ebean.find(Sample.class, 1));
+    }
+
+    @Test
+    public void testQuery() {
+        Ebean.createQuery(Sample.class).findList();
     }
 
     @Test

@@ -25,6 +25,9 @@ public class DefaultEncryptor implements Encryptor {
 
     @Override
     public byte[] encryptString(String formattedValue, EncryptKey key) {
+        if (formattedValue == null) {
+            return null;
+        }
         StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
         encryptor.setPassword(key.getStringValue());
         return encryptor.encrypt(formattedValue).getBytes(Charset.forName("UTF-8"));
@@ -32,6 +35,9 @@ public class DefaultEncryptor implements Encryptor {
 
     @Override
     public String decryptString(byte[] data, EncryptKey key) {
+        if (data == null) {
+            return null;
+        }
         StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
         encryptor.setPassword(key.getStringValue());
         return encryptor.decrypt(new String(data, Charset.forName("UTF-8")));

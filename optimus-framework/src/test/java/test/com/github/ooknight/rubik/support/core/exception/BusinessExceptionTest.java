@@ -20,42 +20,42 @@ public class BusinessExceptionTest {
     public void testOnlyKey1() {
         thrown.expect(BusinessException.class);
         thrown.expectMessage("BUSINESS_EXCEPTION.ENTITY_NOT_FOUND:[]");
-        throw new BusinessException(BusinessException.Type.ENTITY_NOT_FOUND);
+        throw new BusinessException(BusinessExceptionType.Default.ENTITY_NOT_FOUND);
     }
 
     @Test
     public void testOnlyKey2() {
         thrown.expect(BusinessException.class);
         thrown.expectMessage("BUSINESS_EXCEPTION.UNAUTHORIZED_ACCESS:[]");
-        throw new BusinessException(BusinessException.Type.UNAUTHORIZED_ACCESS);
+        throw new BusinessException(BusinessExceptionType.Default.UNAUTHORIZED_ACCESS);
     }
 
     @Test
     public void testWithArgs1() {
         thrown.expect(BusinessException.class);
         thrown.expectMessage("BUSINESS_EXCEPTION.ENTITY_NOT_FOUND:[class com.github.ooknight.rubik.support.core.OClass, 1]");
-        throw new BusinessException(BusinessException.Type.ENTITY_NOT_FOUND, OClass.class, 1);
+        throw new BusinessException(BusinessExceptionType.Default.ENTITY_NOT_FOUND, OClass.class, 1);
     }
 
     @Test
     public void testWithArgs2() {
         thrown.expect(BusinessException.class);
         thrown.expectMessage("BUSINESS_EXCEPTION.UNAUTHORIZED_ACCESS:[testuser]");
-        throw new BusinessException(BusinessException.Type.UNAUTHORIZED_ACCESS, "testuser");
+        throw new BusinessException(BusinessExceptionType.Default.UNAUTHORIZED_ACCESS, "testuser");
     }
 
     @Test
     public void testWithStack1() {
         thrown.expect(BusinessException.class);
         thrown.expectCause(Matchers.isA(IOException.class));
-        throw new BusinessException(BusinessException.Type.ENTITY_NOT_FOUND, new IOException());
+        throw new BusinessException(BusinessExceptionType.Default.ENTITY_NOT_FOUND, new IOException());
     }
 
     @Test
     public void testWithStack2() {
         thrown.expect(BusinessException.class);
         thrown.expectCause(Matchers.isA(IOException.class));
-        throw new BusinessException(BusinessException.Type.UNAUTHORIZED_ACCESS, new IOException("this is null"));
+        throw new BusinessException(BusinessExceptionType.Default.UNAUTHORIZED_ACCESS, new IOException("this is null"));
     }
 
     @Test
@@ -63,7 +63,7 @@ public class BusinessExceptionTest {
         thrown.expect(BusinessException.class);
         thrown.expectMessage("BUSINESS_EXCEPTION.ENTITY_NOT_FOUND:[class com.github.ooknight.rubik.support.core.OClass, 1]");
         thrown.expectCause(Matchers.isA(IOException.class));
-        throw new BusinessException(BusinessException.Type.ENTITY_NOT_FOUND, new IOException("this is null"), OClass.class, 1);
+        throw new BusinessException(BusinessExceptionType.Default.ENTITY_NOT_FOUND, new IOException("this is null"), OClass.class, 1);
     }
 
     @Test
@@ -71,7 +71,7 @@ public class BusinessExceptionTest {
         thrown.expect(BusinessException.class);
         thrown.expectMessage("BUSINESS_EXCEPTION.UNAUTHORIZED_ACCESS:[testuser]");
         thrown.expectCause(Matchers.isA(IOException.class));
-        throw new BusinessException(BusinessException.Type.UNAUTHORIZED_ACCESS, new IOException("this is null"), "testuser");
+        throw new BusinessException(BusinessExceptionType.Default.UNAUTHORIZED_ACCESS, new IOException("this is null"), "testuser");
     }
 
     @Test

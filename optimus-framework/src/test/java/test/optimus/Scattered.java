@@ -47,7 +47,7 @@ public class Scattered {
 
     @Test
     public void testI18n() {
-        System.out.println(MessageFormat.format("the number is {1}", 1, 2, 3));
+        System.out.println(MessageFormat.format("the number is {0} and {1}", 1, 2));
     }
 }
 

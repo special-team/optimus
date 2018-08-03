@@ -29,6 +29,10 @@
         </dependency>
         <dependency>
             <groupId>com.github.ooknight.rubik</groupId>
+            <artifactId>optimus-support-ebean</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.ooknight.rubik</groupId>
             <artifactId>optimus-framework-testing</artifactId>
             <scope>test</scope>
         </dependency>

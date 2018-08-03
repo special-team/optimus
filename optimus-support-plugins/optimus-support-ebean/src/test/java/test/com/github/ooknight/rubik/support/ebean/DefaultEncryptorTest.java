@@ -4,6 +4,7 @@ import com.github.ooknight.rubik.support.ebean.DefaultEncryptKey;
 import com.github.ooknight.rubik.support.ebean.DefaultEncryptor;
 
 import io.ebean.config.EncryptKey;
+import org.junit.Assert;
 import org.junit.Test;
 
 public class DefaultEncryptorTest {
@@ -15,8 +16,8 @@ public class DefaultEncryptorTest {
         String plain = "123456";
         DefaultEncryptor encryptor = new DefaultEncryptor();
         byte[] byte1 = encryptor.encryptString(plain, KEY);
-        String dencrypted = encryptor.decryptString(byte1, KEY);
-        System.out.println(dencrypted);
+        String decrypted = encryptor.decryptString(byte1, KEY);
+        Assert.assertEquals("error", plain, decrypted);
     }
 
     @Test
@@ -24,7 +25,23 @@ public class DefaultEncryptorTest {
         byte[] plain = "123456".getBytes();
         DefaultEncryptor encryptor = new DefaultEncryptor();
         byte[] byte1 = encryptor.encrypt(plain, KEY);
-        byte[] dencrypted = encryptor.decrypt(byte1, KEY);
-        System.out.println(new String(dencrypted));
+        byte[] decrypted = encryptor.decrypt(byte1, KEY);
+        Assert.assertArrayEquals("error", plain, decrypted);
+    }
+
+    @Test
+    public void test3() {
+        DefaultEncryptor encryptor = new DefaultEncryptor();
+        byte[] byte1 = encryptor.encryptString(null, KEY);
+        String decrypted = encryptor.decryptString(byte1, KEY);
+        Assert.assertNull(decrypted);
+    }
+
+    @Test
+    public void test4() {
+        DefaultEncryptor encryptor = new DefaultEncryptor();
+        byte[] byte1 = encryptor.encrypt(null, KEY);
+        byte[] decrypted = encryptor.decrypt(byte1, KEY);
+        Assert.assertNull(decrypted);
     }
 }

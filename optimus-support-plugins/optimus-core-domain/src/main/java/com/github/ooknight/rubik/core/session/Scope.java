@@ -5,33 +5,30 @@ import com.github.ooknight.rubik.support.core.OClass;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-import io.ebean.Expression;
-import io.ebeaninternal.server.expression.DefaultExpressionFactory;
 
+import java.io.Serializable;
 import java.util.Map;
 import java.util.Set;
 
 public final class Scope extends OClass {
 
-    private static final DefaultExpressionFactory EXPRESSION_FACTORY = new DefaultExpressionFactory(false, false);
-    //
-    private static final Expression ALWAYS_TRUE = EXPRESSION_FACTORY.raw("1=1");
-    private static final Expression ALWAYS_FALSE = EXPRESSION_FACTORY.raw("1=0");
+    private static final Condition ALWAYS_TRUE = new Condition("1", "1");
+    private static final Condition ALWAYS_FALSE = new Condition("1", "0");
     //
     private Long uid;
     private Long rid;
     private Long gid;
     private Set<String> restricteds;
-    private Map<Class, Expression> expressions;
-    private Expression defaultExpression;
+    private Map<Class, Condition> conditions;
+    private Condition defaultCondition;
 
-    private Scope(Long uid, Long rid, Long gid, Set<String> restricteds, Map<Class, Expression> expressions, boolean supervisor) {
+    private Scope(Long uid, Long rid, Long gid, Set<String> restricteds, Map<Class, Condition> conditions, boolean supervisor) {
         this.uid = uid;
         this.rid = rid;
         this.gid = gid;
         this.restricteds = (restricteds == null ? Sets.newHashSet() : restricteds);
-        this.expressions = (expressions == null ? Maps.newHashMap() : expressions);
-        this.defaultExpression = supervisor ? ALWAYS_TRUE : ALWAYS_FALSE;
+        this.conditions = (conditions == null ? Maps.newHashMap() : conditions);
+        this.defaultCondition = supervisor ? ALWAYS_TRUE : ALWAYS_FALSE;
     }
 
     public static Scope DUMMY() {
@@ -42,8 +39,8 @@ public final class Scope extends OClass {
         return new Scope(uid, rid, gid, null, null, supervisor);
     }
 
-    public static Scope BUILD(Long uid, Long rid, Long gid, Set<String> restricteds, Map<Class, Expression> expressions, boolean supervisor) {
-        return new Scope(uid, rid, gid, restricteds, expressions, supervisor);
+    public static Scope BUILD(Long uid, Long rid, Long gid, Set<String> restricteds, Map<Class, Condition> conditions, boolean supervisor) {
+        return new Scope(uid, rid, gid, restricteds, conditions, supervisor);
     }
 
     @JSONField(name = "uid", ordinal = 1)
@@ -66,12 +63,27 @@ public final class Scope extends OClass {
         return this.restricteds;
     }
 
-    @JSONField(name = "expressions", ordinal = 5)
-    public Map<Class, Expression> expressions() {
-        return this.expressions;
+    @JSONField(name = "conditions", ordinal = 5)
+    public Map<Class, Condition> expressions() {
+        return this.conditions;
     }
 
-    public Expression expression(Class clz) {
-        return expressions.getOrDefault(clz, defaultExpression);
+    public Condition condition(Class clz) {
+        return conditions.getOrDefault(clz, defaultCondition);
+    }
+
+    public static class Condition implements Serializable {
+
+        private String left;
+        private String right;
+
+        private Condition(String left, String right) {
+            this.left = left;
+            this.right = right;
+        }
+
+        public String raw() {
+            return left + "=" + right;
+        }
     }
 }
