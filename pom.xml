@@ -11,7 +11,6 @@
         <module>optimus-dependencies</module>
         <module>optimus-framework</module>
         <module>optimus-framework-testing</module>
-        <module>optimus-modules</module>
         <module>optimus-support-plugins</module>
     </modules>
 
