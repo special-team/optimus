@@ -164,7 +164,10 @@ public class Scattered {
         sample.setName("test");
         sample.setMail("test@test.com");
         Ebean.insert(sample);
-        System.out.println(Ebean.createQuery(Sample.class).findList());
-        System.out.println(Ebean.createQuery(Sample.class).where().eq("mail", "test@test.com").findList());
+        System.out.println(Ebean.createSqlQuery("select * from e_sample where name_='test'").findOne());
+        List<Sample> s1 = Ebean.createQuery(Sample.class).where().eq("mail", "test@test.com").findList();
+        Assert.assertEquals(1, s1.size());
+        List<Sample> s2 = new QSample().mail.equalTo("test@test.com").findList();
+        Assert.assertEquals(1, s2.size());
     }
 }

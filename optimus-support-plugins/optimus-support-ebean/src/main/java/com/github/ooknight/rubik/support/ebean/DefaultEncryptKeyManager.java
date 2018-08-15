@@ -16,10 +16,6 @@ public class DefaultEncryptKeyManager implements EncryptKeyManager {
         return encryptKeyMap.getOrDefault(table + "." + column, encryptKeyDefault);
     }
 
-    @Override
-    public void initialise() {
-    }
-
     public void put(String table, String column, String key) {
         this.encryptKeyMap.put(table + "." + column, new DefaultEncryptKey(key));
     }

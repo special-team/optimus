@@ -14,7 +14,6 @@ import javax.persistence.Table;
 
 @Getter
 @Setter
-@FieldNameConstants
 @Entity
 @Table(name = "e_sample")
 public class Sample extends UEntity {
@@ -22,8 +21,9 @@ public class Sample extends UEntity {
     @Column(name = "name_")
     @JSONField(ordinal = 101)
     private String name;
+    //
+    @Encrypted(dbEncryption = false)
     @Column(name = "mail_")
     @JSONField(ordinal = 102)
-    @Encrypted(dbEncryption = false)
     private String mail;
 }

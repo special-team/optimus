@@ -3,24 +3,30 @@ package com.github.ooknight.rubik.support.ebean;
 import io.ebean.config.EncryptKey;
 import io.ebean.config.Encryptor;
 import org.jasypt.encryption.pbe.StandardPBEByteEncryptor;
-import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
-
-import java.nio.charset.Charset;
+import org.jasypt.salt.ZeroSaltGenerator;
 
 public class DefaultEncryptor implements Encryptor {
 
     @Override
     public byte[] encrypt(byte[] data, EncryptKey key) {
-        StandardPBEByteEncryptor byteEncryptor = new StandardPBEByteEncryptor();
-        byteEncryptor.setPassword(key.getStringValue());
-        return byteEncryptor.encrypt(data);
+        if (data == null) {
+            return null;
+        }
+        StandardPBEByteEncryptor encryptor = new StandardPBEByteEncryptor();
+        encryptor.setPassword(key.getStringValue());
+        encryptor.setSaltGenerator(new ZeroSaltGenerator());
+        return encryptor.encrypt(data);
     }
 
     @Override
     public byte[] decrypt(byte[] data, EncryptKey key) {
-        StandardPBEByteEncryptor byteEncryptor = new StandardPBEByteEncryptor();
-        byteEncryptor.setPassword(key.getStringValue());
-        return byteEncryptor.decrypt(data);
+        if (data == null) {
+            return null;
+        }
+        StandardPBEByteEncryptor encryptor = new StandardPBEByteEncryptor();
+        encryptor.setPassword(key.getStringValue());
+        encryptor.setSaltGenerator(new ZeroSaltGenerator());
+        return encryptor.decrypt(data);
     }
 
     @Override
@@ -28,9 +34,10 @@ public class DefaultEncryptor implements Encryptor {
         if (formattedValue == null) {
             return null;
         }
-        StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
+        StandardPBEByteEncryptor encryptor = new StandardPBEByteEncryptor();
         encryptor.setPassword(key.getStringValue());
-        return encryptor.encrypt(formattedValue).getBytes(Charset.forName("UTF-8"));
+        encryptor.setSaltGenerator(new ZeroSaltGenerator());
+        return encryptor.encrypt(formattedValue.getBytes());
     }
 
     @Override
@@ -38,8 +45,9 @@ public class DefaultEncryptor implements Encryptor {
         if (data == null) {
             return null;
         }
-        StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
+        StandardPBEByteEncryptor encryptor = new StandardPBEByteEncryptor();
         encryptor.setPassword(key.getStringValue());
-        return encryptor.decrypt(new String(data, Charset.forName("UTF-8")));
+        encryptor.setSaltGenerator(new ZeroSaltGenerator());
+        return new String(encryptor.decrypt(data));
     }
 }
