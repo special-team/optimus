@@ -1,6 +1,8 @@
 package com.github.ooknight.rubik.optimus.kernel;
 
 import com.github.ooknight.rubik.core.kernel.DBContext;
+import com.github.ooknight.rubik.support.ebean.DefaultEncryptKeyManager;
+import com.github.ooknight.rubik.support.ebean.DefaultEncryptor;
 import com.github.ooknight.rubik.support.ebean.LoggingSlowQueryListener;
 
 import io.ebean.EbeanServerFactory;
@@ -45,9 +47,11 @@ public class KernelAutoConfiguration {
         config.setExternalTransactionManager(new SpringJdbcTransactionManager());
         config.setDatabaseBooleanTrue("1");
         config.setDatabaseBooleanFalse("0");
-        config.setSlowQueryMillis(3000L);
         config.setExpressionEqualsWithNullAsNoop(true);
+        config.setSlowQueryMillis(3000L);
         config.setSlowQueryListener(new LoggingSlowQueryListener());
+        config.setEncryptKeyManager(new DefaultEncryptKeyManager());
+        config.setEncryptor(new DefaultEncryptor());
         return new DBContext(EbeanServerFactory.create(config));
     }
 }

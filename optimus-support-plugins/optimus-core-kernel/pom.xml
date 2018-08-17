@@ -20,6 +20,11 @@
             <artifactId>optimus-support-ebean</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.github.ooknight.rubik</groupId>
+            <artifactId>optimus-framework-testing</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
         </dependency>
@@ -38,11 +43,6 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.ooknight.rubik</groupId>
-            <artifactId>optimus-framework-testing</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jasypt</groupId>
