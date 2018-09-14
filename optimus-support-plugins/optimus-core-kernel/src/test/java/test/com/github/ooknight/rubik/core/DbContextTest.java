@@ -35,9 +35,9 @@ public class DbContextTest {
     @Test
     public void testUpdate() {
         Sample s = Mock.mock(Sample.class);
-        s.setId(1L);
+        s.setId(2L);
         db.update(s);
-        db.update(Sample.class).set("mail", "uuuu").where().idEq(1L).update();
+        db.update(Sample.class).set("mail", "uuuu").where().idEq(2L).update();
     }
 
     @Test
@@ -67,6 +67,6 @@ public class DbContextTest {
 
     @Test
     public void testDelete() {
-        db.delete(Sample.class, 1L);
+        db.delete(Sample.class, 3L);
     }
 }

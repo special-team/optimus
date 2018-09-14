@@ -5,7 +5,6 @@ import optimus.SQL;
 import com.github.ooknight.rubik.support.core.exception.BusinessException;
 import com.github.ooknight.rubik.support.core.exception.BusinessExceptionType;
 
-import org.jasypt.encryption.StringEncryptor;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.jasypt.salt.StringFixedSaltGenerator;
 import org.jasypt.salt.ZeroSaltGenerator;
@@ -42,12 +41,23 @@ public class UpperCaseTest {
     public void test4() {
         //TextEncryptor encryptor = new BasicTextEncryptor();
         //TextEncryptor encryptor = new StrongTextEncryptor();
-        StringEncryptor encryptor = new StandardPBEStringEncryptor();
-        ((StandardPBEStringEncryptor) encryptor).setPassword("1234567");
-        ((StandardPBEStringEncryptor) encryptor).setSaltGenerator(new StringFixedSaltGenerator("123456789012345678"));
-        ((StandardPBEStringEncryptor) encryptor).setSaltGenerator(new ZeroSaltGenerator());
+        StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
+        encryptor.setPassword("1234567");
+        encryptor.setSaltGenerator(new ZeroSaltGenerator());
         System.out.println(encryptor.encrypt("a"));
         System.out.println(encryptor.encrypt("a"));
-        System.out.println(encryptor.decrypt("Hu9DabO2Z7E="));
+        System.out.println(encryptor.decrypt("OzEXxjfRMQs="));
+    }
+
+    @Test
+    public void test5() {
+        //TextEncryptor encryptor = new BasicTextEncryptor();
+        //TextEncryptor encryptor = new StrongTextEncryptor();
+        StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
+        encryptor.setPassword("1234567");
+        encryptor.setSaltGenerator(new StringFixedSaltGenerator("123456789012345678"));
+        System.out.println(encryptor.encrypt("a"));
+        System.out.println(encryptor.encrypt("a"));
+        System.out.println(encryptor.decrypt("EUxhyeMuc+M="));
     }
 }
