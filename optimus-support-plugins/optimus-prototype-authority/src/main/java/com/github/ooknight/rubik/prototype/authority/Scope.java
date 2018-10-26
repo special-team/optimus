@@ -1,4 +1,4 @@
-package com.github.ooknight.rubik.core.session;
+package com.github.ooknight.rubik.prototype.authority;
 
 import com.github.ooknight.rubik.support.core.OClass;
 

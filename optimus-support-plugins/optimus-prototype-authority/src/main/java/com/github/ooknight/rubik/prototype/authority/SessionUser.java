@@ -1,4 +1,4 @@
-package com.github.ooknight.rubik.core.session;
+package com.github.ooknight.rubik.prototype.authority;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
@@ -25,17 +25,14 @@ public interface SessionUser extends Serializable {
     String name();
 
     @JSONField(name = "god", ordinal = 5)
-    boolean god();
+    SessionUserType type();
 
-    @JSONField(name = "admin", ordinal = 6)
-    boolean admin();
-
-    @JSONField(name = "resources", ordinal = 7)
+    @JSONField(name = "resources", ordinal = 6)
     Set<String> resources();
 
-    @JSONField(name = "tags", ordinal = 8)
+    @JSONField(name = "tags", ordinal = 7)
     Set<String> tags();
 
-    @JSONField(name = "scope", ordinal = 9)
+    @JSONField(name = "scope", ordinal = 8)
     Scope scope();
 }
