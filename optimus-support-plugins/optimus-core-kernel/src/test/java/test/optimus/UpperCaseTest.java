@@ -2,8 +2,8 @@ package test.optimus;
 
 import optimus.KERNEL;
 import optimus.SQL;
-import com.github.ooknight.rubik.support.core.exception.BusinessException;
-import com.github.ooknight.rubik.support.core.exception.BusinessExceptionType;
+import com.github.ooknight.rubik.framework.exception.BusinessException;
+import com.github.ooknight.rubik.framework.exception.BusinessExceptionType;
 
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.jasypt.salt.StringFixedSaltGenerator;

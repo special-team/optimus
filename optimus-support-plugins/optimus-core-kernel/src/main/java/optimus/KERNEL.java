@@ -1,7 +1,7 @@
 package optimus;
 
-import com.github.ooknight.rubik.support.core.exception.BusinessException;
-import com.github.ooknight.rubik.support.core.exception.BusinessExceptionType;
+import com.github.ooknight.rubik.framework.exception.BusinessException;
+import com.github.ooknight.rubik.framework.exception.BusinessExceptionType;
 
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;

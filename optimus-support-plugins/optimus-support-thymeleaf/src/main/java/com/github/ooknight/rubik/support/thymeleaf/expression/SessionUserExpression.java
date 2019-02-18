@@ -1,7 +1,7 @@
 package com.github.ooknight.rubik.support.thymeleaf.expression;
 
-import com.github.ooknight.rubik.core.session.Scope;
-import com.github.ooknight.rubik.core.session.SessionUser;
+import com.github.ooknight.rubik.prototype.authority.Scope;
+import com.github.ooknight.rubik.prototype.authority.SessionUser;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 

@@ -1,6 +1,6 @@
 package com.github.ooknight.rubik.prototype.authority;
 
-import com.github.ooknight.rubik.support.core.OClass;
+import com.github.ooknight.rubik.prime.OClass;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Getter;

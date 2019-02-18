@@ -1,8 +1,8 @@
 package test.com.github.ooknight.rubik.support.core.exception;
 
-import com.github.ooknight.rubik.support.core.OClass;
-import com.github.ooknight.rubik.support.core.exception.BusinessException;
-import com.github.ooknight.rubik.support.core.exception.BusinessExceptionType;
+import com.github.ooknight.rubik.framework.exception.BusinessException;
+import com.github.ooknight.rubik.framework.exception.BusinessExceptionType;
+import com.github.ooknight.rubik.prime.OClass;
 
 import org.hamcrest.Matchers;
 import org.junit.Rule;
@@ -33,7 +33,7 @@ public class BusinessExceptionTest {
     @Test
     public void testWithArgs1() {
         thrown.expect(BusinessException.class);
-        thrown.expectMessage("BUSINESS_EXCEPTION.ENTITY_NOT_FOUND:[class com.github.ooknight.rubik.support.core.OClass, 1]");
+        thrown.expectMessage("BUSINESS_EXCEPTION.ENTITY_NOT_FOUND:[class com.github.ooknight.rubik.prime.OClass, 1]");
         throw new BusinessException(BusinessExceptionType.Default.ENTITY_NOT_FOUND, OClass.class, 1);
     }
 
@@ -61,7 +61,7 @@ public class BusinessExceptionTest {
     @Test
     public void testWithArgsAndStack1() {
         thrown.expect(BusinessException.class);
-        thrown.expectMessage("BUSINESS_EXCEPTION.ENTITY_NOT_FOUND:[class com.github.ooknight.rubik.support.core.OClass, 1]");
+        thrown.expectMessage("BUSINESS_EXCEPTION.ENTITY_NOT_FOUND:[class com.github.ooknight.rubik.prime.OClass, 1]");
         thrown.expectCause(Matchers.isA(IOException.class));
         throw new BusinessException(BusinessExceptionType.Default.ENTITY_NOT_FOUND, new IOException("this is null"), OClass.class, 1);
     }

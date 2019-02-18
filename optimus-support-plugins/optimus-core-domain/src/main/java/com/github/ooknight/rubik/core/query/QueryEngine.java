@@ -2,7 +2,7 @@ package com.github.ooknight.rubik.core.query;
 
 import optimus.DOMAIN;
 import com.github.ooknight.rubik.core.entity.UEntity;
-import com.github.ooknight.rubik.core.session.Scope;
+import com.github.ooknight.rubik.prototype.authority.Scope;
 
 import io.ebean.Ebean;
 import io.ebean.Query;

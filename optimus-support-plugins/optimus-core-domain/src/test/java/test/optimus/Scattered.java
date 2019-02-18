@@ -1,12 +1,12 @@
 package test.optimus;
 
-import assist.sample.entity.Sample;
-import assist.sample.entity.query.QSample;
-
 import com.github.ooknight.rubik.core.entity.Active;
 import com.github.ooknight.rubik.core.query.QueryEngine;
-import com.github.ooknight.rubik.support.core.exception.BusinessException;
+import com.github.ooknight.rubik.framework.exception.BusinessException;
+import com.github.ooknight.rubik.prototype.authority.Scope;
 
+import assist.sample.entity.Sample;
+import assist.sample.entity.query.QSample;
 import io.ebean.Ebean;
 import io.ebean.Query;
 import org.junit.Assert;

@@ -8,7 +8,7 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>optimus-framework</artifactId>
+    <artifactId>optimus-prime</artifactId>
 
     <dependencyManagement>
         <dependencies>
@@ -24,18 +24,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.github.ooknight.rubik</groupId>
-            <artifactId>optimus-prime</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.ooknight.rubik</groupId>
-            <artifactId>optimus-prototype-authority</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
@@ -48,8 +36,13 @@
             <artifactId>fastjson</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.github.ooknight.rubik</groupId>
-            <artifactId>optimus-framework-testing</artifactId>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

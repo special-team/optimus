@@ -18,8 +18,6 @@
         <module>optimus-core-web</module>
         <module>optimus-core-web-security</module>
         <!--  -->
-        <module>optimus-prototype-authority</module>
-        <!--  -->
         <module>optimus-support-ebean</module>
         <module>optimus-support-ignite</module>
         <module>optimus-support-thymeleaf</module>

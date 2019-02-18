@@ -1,4 +1,4 @@
-package com.github.ooknight.rubik.support.core.exception;
+package com.github.ooknight.rubik.framework.exception;
 
 public interface BusinessExceptionType {
 

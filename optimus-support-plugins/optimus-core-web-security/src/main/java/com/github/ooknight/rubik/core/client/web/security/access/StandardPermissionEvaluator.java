@@ -1,6 +1,6 @@
 package com.github.ooknight.rubik.core.client.web.security.access;
 
-import com.github.ooknight.rubik.core.session.SessionUser;
+import com.github.ooknight.rubik.prototype.authority.SessionUser;
 
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;

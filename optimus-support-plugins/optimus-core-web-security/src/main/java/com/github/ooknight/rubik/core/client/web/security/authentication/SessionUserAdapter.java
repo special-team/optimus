@@ -1,9 +1,9 @@
 package com.github.ooknight.rubik.core.client.web.security.authentication;
 
 import com.github.ooknight.rubik.core.entity.State;
-import com.github.ooknight.rubik.core.session.AccountType;
-import com.github.ooknight.rubik.core.session.Scope;
-import com.github.ooknight.rubik.core.session.SessionUser;
+import com.github.ooknight.rubik.prototype.authority.Scope;
+import com.github.ooknight.rubik.prototype.authority.SessionUser;
+import com.github.ooknight.rubik.prototype.authority.SessionUserType;
 
 import com.google.common.collect.Sets;
 import org.springframework.security.core.CredentialsContainer;
@@ -22,14 +22,14 @@ public final class SessionUserAdapter implements SessionUser, UserDetails, Crede
     private Long gid;
     private String name;
     private String password;
-    private AccountType type;
+    private SessionUserType type;
     private State state;
     private Collection<GrantedAuthority> authorities;
     private Set<String> resources = Sets.newHashSet();
     private Set<String> tags = Sets.newHashSet();
     private Scope scope = Scope.DUMMY();
 
-    public SessionUserAdapter(Long uid, Long rid, Long gid, String name, String password, AccountType type, State state) {
+    public SessionUserAdapter(Long uid, Long rid, Long gid, String name, String password, SessionUserType type, State state) {
         Assert.hasText(name, "SessionUser 创建失败 : 用户名非法");
         Assert.isTrue(state.code() > 0, "SessionUser 创建失败 : 状态异常");
         this.uid = uid;
@@ -50,12 +50,12 @@ public final class SessionUserAdapter implements SessionUser, UserDetails, Crede
 
     private Collection<GrantedAuthority> parseAuthorities() {
         Set<GrantedAuthority> result = Sets.newHashSet(new SimpleGrantedAuthority("ROLE_USER"));
-        if (this.type == AccountType.ADMIN) {
-            result.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-        }
-        if (this.type == AccountType.GOD) {
-            result.add(new SimpleGrantedAuthority("ROLE_GOD"));
-        }
+        //if (this.type == AccountType.ADMIN) {
+        //    result.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        //}
+        //if (this.type == AccountType.GOD) {
+        //    result.add(new SimpleGrantedAuthority("ROLE_GOD"));
+        //}
         return result;
     }
 
@@ -82,13 +82,8 @@ public final class SessionUserAdapter implements SessionUser, UserDetails, Crede
     }
 
     @Override
-    public boolean god() {
-        return this.type == AccountType.GOD;
-    }
-
-    @Override
-    public boolean admin() {
-        return (this.type == AccountType.ADMIN);
+    public SessionUserType type() {
+        return this.type;
     }
 
     @Override

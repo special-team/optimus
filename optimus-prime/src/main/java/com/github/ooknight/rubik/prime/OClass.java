@@ -1,4 +1,4 @@
-package com.github.ooknight.rubik.support.core;
+package com.github.ooknight.rubik.prime;
 
 import optimus.TOOLKIT;
 

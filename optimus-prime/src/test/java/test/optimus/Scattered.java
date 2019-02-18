@@ -19,8 +19,11 @@ public class Scattered {
     public void testDateTimeFormt() {
         for (Locale locale : Locale.getAvailableLocales()) {
             String k = locale.toString();
-            String v = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM, locale).format(new Date());
-            System.out.format("%-30s : %s \n", k, v);
+            String v1 = DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.FULL, locale).format(new Date());
+            String v2 = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale).format(new Date());
+            String v3 = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM, locale).format(new Date());
+            String v4 = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, locale).format(new Date());
+            System.out.format("%-30s : %-50s : %-50s : %-50s : %-50s \n", k, v1, v2, v3, v4);
         }
     }
 
