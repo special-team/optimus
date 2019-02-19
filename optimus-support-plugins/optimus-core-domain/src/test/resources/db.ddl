@@ -4,12 +4,12 @@ DROP TABLE IF EXISTS e_sample;
 -- sample
 -- ======== ======== ======== ========
 CREATE TABLE e_sample (
-    id_      BIGINT       NOT NULL AUTO_INCREMENT COMMENT '主键',
-    name_    VARCHAR(50)  NOT NULL COMMENT '名称',
-    mail_    VARCHAR(200) NULL COMMENT '邮箱',
-    deleted_ INT          NOT NULL COMMENT '记录状态[0:有效|1:无效]',
-    created_ DATETIME     NOT NULL COMMENT '记录创建时间',
-    updated_ DATETIME     NOT NULL COMMENT '记录更新时间',
+    id_      BIGINT AUTO_INCREMENT NOT NULL,
+    name_    VARCHAR(50)           NULL,
+    mail_    VARCHAR(200)          NULL,
+    deleted_ BOOLEAN DEFAULT FALSE NULL,
+    created_ DATETIME              NULL,
+    updated_ DATETIME              NULL,
     CONSTRAINT sample_pk PRIMARY KEY (id_)
 );
 
