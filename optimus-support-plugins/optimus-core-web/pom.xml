@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.github.ooknight.rubik</groupId>
         <artifactId>optimus-support-plugins</artifactId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>optimus-core-web</artifactId>

@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.github.ooknight.rubik</groupId>
         <artifactId>optimus</artifactId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>optimus-dependencies</artifactId>
@@ -27,69 +27,58 @@
                 <artifactId>lombok</artifactId>
                 <version>1.18.6</version>
             </dependency>
-            <!-- ========= ========= ========= ========= ========= ========= ========= ========= ========= 自定义 -->
-            <!-- _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ optimus -->
+            <!-- ========= ========= ========= ========= ========= ========= ========= ========= ========= optimus -->
             <dependency>
                 <groupId>com.github.ooknight.rubik</groupId>
                 <artifactId>optimus-prime</artifactId>
-                <version>${version.com.github.ooknight.rubik}</version>
+                <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.ooknight.rubik</groupId>
                 <artifactId>optimus-prototype-authority</artifactId>
-                <version>${version.com.github.ooknight.rubik}</version>
+                <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.ooknight.rubik</groupId>
                 <artifactId>optimus-framework</artifactId>
-                <version>${version.com.github.ooknight.rubik}</version>
+                <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.ooknight.rubik</groupId>
                 <artifactId>optimus-framework-testing</artifactId>
-                <version>${version.com.github.ooknight.rubik}</version>
+                <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.ooknight.rubik</groupId>
                 <artifactId>optimus-support-ebean</artifactId>
-                <version>${version.com.github.ooknight.rubik}</version>
+                <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.ooknight.rubik</groupId>
                 <artifactId>optimus-support-thymeleaf</artifactId>
-                <version>${version.com.github.ooknight.rubik}</version>
+                <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.ooknight.rubik</groupId>
                 <artifactId>optimus-core-domain</artifactId>
-                <version>${version.com.github.ooknight.rubik}</version>
+                <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.ooknight.rubik</groupId>
                 <artifactId>optimus-core-kernel</artifactId>
-                <version>${version.com.github.ooknight.rubik}</version>
+                <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.ooknight.rubik</groupId>
                 <artifactId>optimus-core-web</artifactId>
-                <version>${version.com.github.ooknight.rubik}</version>
+                <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.ooknight.rubik</groupId>
                 <artifactId>optimus-core-web-security</artifactId>
-                <version>${version.com.github.ooknight.rubik}</version>
+                <version>${revision}</version>
             </dependency>
-            <dependency>
-                <groupId>com.github.ooknight.rubik</groupId>
-                <artifactId>optimus-platform-domain</artifactId>
-                <version>${version.com.github.ooknight.rubik}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.ooknight.rubik</groupId>
-                <artifactId>optimus-platform-kernel</artifactId>
-                <version>${version.com.github.ooknight.rubik}</version>
-            </dependency>
-            <!-- _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ ooknight ui -->
+            <!-- ========= ========= ========= ========= ========= ========= ========= ========= ========= ooknight ui -->
             <dependency>
                 <groupId>com.github.ooknight.ui</groupId>
                 <artifactId>bootstrap</artifactId>
@@ -120,7 +109,7 @@
                 <artifactId>vuetify</artifactId>
                 <version>1.0.17.1</version>
             </dependency>
-            <!-- _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ ebean orm -->
+            <!-- ========= ========= ========= ========= ========= ========= ========= ========= ========= ebean orm -->
             <dependency>
                 <groupId>io.ebean</groupId>
                 <artifactId>ebean</artifactId>
@@ -141,7 +130,7 @@
                 <artifactId>querybean-generator</artifactId>
                 <version>11.34.2</version>
             </dependency>
-            <!-- _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ ignite -->
+            <!-- ========= ========= ========= ========= ========= ========= ========= ========= ========= ignite -->
             <dependency>
                 <groupId>org.apache.ignite</groupId>
                 <artifactId>ignite-core</artifactId>
@@ -152,7 +141,7 @@
                 <artifactId>ignite-slf4j</artifactId>
                 <version>2.7.0</version>
             </dependency>
-            <!-- _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ _._._._._ others -->
+            <!-- ========= ========= ========= ========= ========= ========= ========= ========= ========= others -->
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
