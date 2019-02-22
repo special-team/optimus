@@ -25,7 +25,7 @@ import javax.annotation.Resource;
 @ContextConfiguration(classes = WebAutoConfiguration.class)
 @WebMvcTest(controllers = SampleController.class, secure = false)
 @ComponentScan(value = "assist.sample", excludeFilters = @ComponentScan.Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class))
-@ActiveProfiles(JUNIT.SPRING_PROFILE)
+@ActiveProfiles(JUNIT.PROFILE_DEVELOP)
 public class Run {
 
     @Resource

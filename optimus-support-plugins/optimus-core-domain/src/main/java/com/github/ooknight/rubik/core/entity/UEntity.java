@@ -18,16 +18,19 @@ public abstract class UEntity implements Serializable {
 
     @Id
     @Column(name = "id_")
-    @JSONField(ordinal = 0)
+    @JSONField
     private Long id;
+    //
     @SoftDelete
     @Column(name = "deleted_", updatable = false)
     @JSONField(ordinal = 991)
     private boolean deleted;
+    //
     @CreatedTimestamp
     @Column(name = "created_")
     @JSONField(ordinal = 992)
     private LocalDateTime created;
+    //
     @UpdatedTimestamp
     @Column(name = "updated_")
     @JSONField(ordinal = 993)

@@ -1,13 +1,12 @@
 package test.com.github.ooknight.rubik.core;
 
-import assist.sample.entity.Sample;
-import assist.sample.entity.query.QSample;
-
 import optimus.JUNIT;
-import com.github.ooknight.rubik.core.kernel.DBContext;
-import com.github.ooknight.rubik.optimus.kernel.KernelAutoConfiguration;
+import com.github.ooknight.rubik.optimus.kernel.KernelConfiguration;
 import com.github.ooknight.rubik.support.mocker.Mock;
 
+import assist.sample.entity.Sample;
+import assist.sample.entity.query.QSample;
+import io.ebean.Database;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,12 +17,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.annotation.Resource;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = KernelAutoConfiguration.class)
-@ActiveProfiles(JUNIT.SPRING_PROFILE)
+@SpringBootTest(classes = KernelConfiguration.class)
+@ActiveProfiles(JUNIT.PROFILE_DEVELOP)
 public class DbContextTest {
 
     @Resource
-    private DBContext db;
+    private Database db;
 
     @Test
     public void testInsert() {
