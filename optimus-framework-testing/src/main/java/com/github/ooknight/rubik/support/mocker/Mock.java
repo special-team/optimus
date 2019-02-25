@@ -5,7 +5,6 @@ import com.github.ooknight.rubik.support.mocker.mocker.BaseMocker;
 /**
  * 模拟对象门面类
  */
-@SuppressWarnings("unchecked")
 public final class Mock {
 
     private Mock() {
