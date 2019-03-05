@@ -1,9 +1,6 @@
 package test.optimus;
 
 import com.github.ooknight.rubik.core.entity.Active;
-import com.github.ooknight.rubik.core.query.QueryEngine;
-import com.github.ooknight.rubik.framework.exception.BusinessException;
-import com.github.ooknight.rubik.prototype.authority.Scope;
 
 import assist.sample.entity.Sample;
 import assist.sample.entity.query.QSample;
@@ -101,25 +98,23 @@ public class Scattered {
 
     @Test
     public void test3() {
-        List<Sample> r1 = QueryEngine.QUERY(QSample.class).id.eq(1).findList();
+        List<Sample> r1 = new QSample().id.eq(1).findList();
         System.out.println(r1);
-        List<Sample> r2 = QueryEngine.QUERY(QSample.class, Scope.DUMMY()).id.eq(1).findList();
-        System.out.println(r2);
     }
 
     @Test
     public void test4() {
-        System.out.println(QueryEngine.SELECT(Sample.class, 1L));
-        System.out.println(QueryEngine.SELECT(Sample.class, Scope.DUMMY(), 1L));
-        System.out.println(QueryEngine.SELECT(Sample.class));
-        System.out.println(QueryEngine.SELECT(Sample.class, Scope.DUMMY()));
+        //System.out.println(QueryEngine.SELECT(Sample.class, 1L));
+        //System.out.println(QueryEngine.SELECT(Sample.class, Scope.DUMMY(), 1L));
+        //System.out.println(QueryEngine.SELECT(Sample.class));
+        //System.out.println(QueryEngine.SELECT(Sample.class, Scope.DUMMY()));
     }
 
     @Test
     public void test5() {
-        System.out.println(QueryEngine.GETONE(Sample.class, 1L));
-        thrown.expect(BusinessException.class);
-        System.out.println(QueryEngine.GETONE(Sample.class, Scope.DUMMY(), 1L));
+        //System.out.println(QueryEngine.GETONE(Sample.class, 1L));
+        //thrown.expect(BusinessException.class);
+        //System.out.println(QueryEngine.GETONE(Sample.class, Scope.DUMMY(), 1L));
     }
 
     @Test

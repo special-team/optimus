@@ -4,7 +4,7 @@ import io.ebean.typequery.TQProperty;
 
 public abstract class AbstractSchema {
 
-    public static String column(TQProperty property) {
+    public static String p(TQProperty property) {
         return property.toString();
     }
 }
