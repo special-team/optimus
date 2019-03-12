@@ -2,6 +2,8 @@ package optimus;
 
 import com.google.common.collect.Lists;
 import lombok.experimental.UtilityClass;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -30,29 +32,21 @@ public final class WEB {
         return r;
     }
 
-    /*
     public static E404 ERROR_HTTP_404() {
         return new E404();
     }
 
-    public static E500 ERROR(String message) {
-        return new E500(message);
+    public static E500 ERROR() {
+        return new E500();
     }
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public static class E404 extends BusinessException {
+    public static class E404 extends RuntimeException {
 
-        private E404() {
-            super("404");
-        }
     }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public static class E500 extends BusinessException {
+    public static class E500 extends RuntimeException {
 
-        private E500(String key) {
-            super(key);
-        }
     }
-    */
 }

@@ -45,7 +45,7 @@ public final class ReflectionUtils {
         BeanInfo beanInfo = Introspector.getBeanInfo(clazz, Object.class);
         PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
         for (Field field : clazz.getDeclaredFields()) {
-            if (field.getAnnotation(Id.class) != null ||
+            if ((field.getAnnotation(Id.class) != null && field.getType().isAssignableFrom(Long.class)) ||
                 field.getAnnotation(CreatedTimestamp.class) != null ||
                 field.getAnnotation(UpdatedTimestamp.class) != null) {
                 continue;

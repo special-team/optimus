@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public abstract class UEntity extends OEntity {
 
     @Id
-    @Column(name = "id_")
+    @Column(name = "id_", updatable = false)
     @JSONField
     private Long id;
     //
@@ -24,7 +24,7 @@ public abstract class UEntity extends OEntity {
     private boolean deleted;
     //
     @CreatedTimestamp
-    @Column(name = "created_")
+    @Column(name = "created_", updatable = false)
     @JSONField(ordinal = 1001)
     private LocalDateTime created;
     //
