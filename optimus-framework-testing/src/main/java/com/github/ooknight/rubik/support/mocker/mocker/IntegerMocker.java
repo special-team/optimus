@@ -1,7 +1,6 @@
 package com.github.ooknight.rubik.support.mocker.mocker;
 
-import com.github.ooknight.rubik.support.mocker.MockConfig;
-import com.github.ooknight.rubik.support.mocker.Mocker;
+import com.github.ooknight.rubik.support.mocker.DataConfig;
 import com.github.ooknight.rubik.support.mocker.util.RandomUtils;
 
 /**
@@ -10,7 +9,7 @@ import com.github.ooknight.rubik.support.mocker.util.RandomUtils;
 public class IntegerMocker implements Mocker<Integer> {
 
     @Override
-    public Integer mock(MockConfig mockConfig) {
-        return RandomUtils.nextInt(mockConfig.getIntRange()[0], mockConfig.getIntRange()[1]);
+    public Integer mock(DataConfig mockConfig) {
+        return RandomUtils.nextInt(mockConfig.intRange()[0], mockConfig.intRange()[1]);
     }
 }

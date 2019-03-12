@@ -1,8 +1,6 @@
 package com.github.ooknight.rubik.support.mocker.mocker;
 
-import com.github.ooknight.rubik.support.mocker.MockConfig;
-import com.github.ooknight.rubik.support.mocker.Mocker;
-import com.github.ooknight.rubik.support.mocker.util.RandomUtils;
+import com.github.ooknight.rubik.support.mocker.DataConfig;
 
 import java.math.BigDecimal;
 
@@ -12,7 +10,7 @@ import java.math.BigDecimal;
 public class BigDecimalMocker implements Mocker<BigDecimal> {
 
     @Override
-    public BigDecimal mock(MockConfig mockConfig) {
-        return BigDecimal.valueOf(RandomUtils.nextDouble(mockConfig.getDoubleRange()[0], mockConfig.getDoubleRange()[1]));
+    public BigDecimal mock(DataConfig mockConfig) {
+        return BigDecimal.valueOf(mockConfig.global().getMocker(Double.class).mock(mockConfig));
     }
 }

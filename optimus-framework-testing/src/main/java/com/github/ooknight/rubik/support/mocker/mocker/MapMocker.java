@@ -1,7 +1,6 @@
 package com.github.ooknight.rubik.support.mocker.mocker;
 
-import com.github.ooknight.rubik.support.mocker.MockConfig;
-import com.github.ooknight.rubik.support.mocker.Mocker;
+import com.github.ooknight.rubik.support.mocker.DataConfig;
 import com.github.ooknight.rubik.support.mocker.util.RandomUtils;
 
 import java.lang.reflect.Type;
@@ -20,8 +19,8 @@ public class MapMocker implements Mocker<Object> {
     }
 
     @Override
-    public Object mock(MockConfig mockConfig) {
-        int size = RandomUtils.nextSize(mockConfig.getSizeRange()[0], mockConfig.getSizeRange()[1]);
+    public Object mock(DataConfig mockConfig) {
+        int size = RandomUtils.nextSize(mockConfig.sizeRange()[0], mockConfig.sizeRange()[1]);
         Map<Object, Object> result = new HashMap<>(size);
         BaseMocker keyMocker = new BaseMocker(types[0]);
         BaseMocker valueMocker = new BaseMocker(types[1]);

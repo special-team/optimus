@@ -1,8 +1,9 @@
 package com.github.ooknight.rubik.support.mocker.mocker;
 
-import com.github.ooknight.rubik.support.mocker.MockConfig;
-import com.github.ooknight.rubik.support.mocker.Mocker;
+import com.github.ooknight.rubik.support.mocker.DataConfig;
 import com.github.ooknight.rubik.support.mocker.util.RandomUtils;
+
+import java.math.BigDecimal;
 
 /**
  * Float对象模拟器
@@ -10,7 +11,7 @@ import com.github.ooknight.rubik.support.mocker.util.RandomUtils;
 public class FloatMocker implements Mocker<Float> {
 
     @Override
-    public Float mock(MockConfig mockConfig) {
-        return RandomUtils.nextFloat(mockConfig.getFloatRange()[0], mockConfig.getFloatRange()[1]);
+    public Float mock(DataConfig mockConfig) {
+        return new BigDecimal(RandomUtils.nextFloat(mockConfig.floatRange()[0], mockConfig.floatRange()[1])).setScale(mockConfig.decimalScale(), BigDecimal.ROUND_FLOOR).floatValue();
     }
 }

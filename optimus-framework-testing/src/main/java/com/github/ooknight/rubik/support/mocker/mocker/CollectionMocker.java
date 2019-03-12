@@ -1,7 +1,6 @@
 package com.github.ooknight.rubik.support.mocker.mocker;
 
-import com.github.ooknight.rubik.support.mocker.MockConfig;
-import com.github.ooknight.rubik.support.mocker.Mocker;
+import com.github.ooknight.rubik.support.mocker.DataConfig;
 import com.github.ooknight.rubik.support.mocker.util.RandomUtils;
 
 import java.lang.reflect.Type;
@@ -24,8 +23,8 @@ public class CollectionMocker implements Mocker<Object> {
     }
 
     @Override
-    public Object mock(MockConfig mockConfig) {
-        int size = RandomUtils.nextSize(mockConfig.getSizeRange()[0], mockConfig.getSizeRange()[1]);
+    public Object mock(DataConfig mockConfig) {
+        int size = RandomUtils.nextSize(mockConfig.sizeRange()[0], mockConfig.sizeRange()[1]);
         Collection<Object> result;
         if (List.class.isAssignableFrom(clazz)) {
             result = new ArrayList<>(size);

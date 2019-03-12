@@ -1,7 +1,6 @@
 package com.github.ooknight.rubik.support.mocker.mocker;
 
-import com.github.ooknight.rubik.support.mocker.MockConfig;
-import com.github.ooknight.rubik.support.mocker.Mocker;
+import com.github.ooknight.rubik.support.mocker.DataConfig;
 
 import java.lang.reflect.ParameterizedType;
 
@@ -17,7 +16,7 @@ public class GenericMocker implements Mocker<Object> {
     }
 
     @Override
-    public Object mock(MockConfig mockConfig) {
+    public Object mock(DataConfig mockConfig) {
         return new BaseMocker(type.getRawType(), type.getActualTypeArguments()).mock(mockConfig);
     }
 }

@@ -1,16 +1,14 @@
 package com.github.ooknight.rubik.support.mocker.mocker;
 
-import com.github.ooknight.rubik.support.mocker.MockConfig;
-import com.github.ooknight.rubik.support.mocker.Mocker;
+import com.github.ooknight.rubik.support.mocker.DataConfig;
 
 import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.Map;
 
-@SuppressWarnings("unchecked")
 public class ClassMocker implements Mocker<Object> {
 
-    private Class clazz;
+    private Class<?> clazz;
     private Type[] genericTypes;
 
     ClassMocker(Class clazz, Type[] genericTypes) {
@@ -19,7 +17,7 @@ public class ClassMocker implements Mocker<Object> {
     }
 
     @Override
-    public Object mock(MockConfig mockConfig) {
+    public Object mock(DataConfig mockConfig) {
         Mocker mocker;
         if (clazz.isArray()) {
             mocker = new ArrayMocker(clazz);
@@ -30,7 +28,7 @@ public class ClassMocker implements Mocker<Object> {
         } else if (clazz.isEnum()) {
             mocker = new EnumMocker(clazz);
         } else {
-            mocker = mockConfig.getMocker(clazz);
+            mocker = mockConfig.global().getMocker(clazz);
             if (mocker == null) {
                 mocker = new BeanMocker(clazz);
             }

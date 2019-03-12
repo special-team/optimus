@@ -1,4 +1,6 @@
-package com.github.ooknight.rubik.support.mocker;
+package com.github.ooknight.rubik.support.mocker.mocker;
+
+import com.github.ooknight.rubik.support.mocker.DataConfig;
 
 /**
  * 模拟器接口
@@ -11,5 +13,5 @@ public interface Mocker<T> {
      * @param mockConfig 模拟数据配置
      * @return 模拟数据对象
      */
-    T mock(MockConfig mockConfig);
+    T mock(DataConfig mockConfig);
 }

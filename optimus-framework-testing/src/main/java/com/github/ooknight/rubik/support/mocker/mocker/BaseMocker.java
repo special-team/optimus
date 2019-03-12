@@ -1,7 +1,6 @@
 package com.github.ooknight.rubik.support.mocker.mocker;
 
-import com.github.ooknight.rubik.support.mocker.MockConfig;
-import com.github.ooknight.rubik.support.mocker.Mocker;
+import com.github.ooknight.rubik.support.mocker.DataConfig;
 
 import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.ParameterizedType;
@@ -20,14 +19,14 @@ public class BaseMocker<T> implements Mocker<T> {
     }
 
     @Override
-    public T mock(MockConfig mockConfig) {
+    public T mock(DataConfig mockConfig) {
         Mocker mocker;
         if (type instanceof ParameterizedType) {
             mocker = new GenericMocker((ParameterizedType) type);
         } else if (type instanceof GenericArrayType) {
             mocker = new ArrayMocker(type);
         } else if (type instanceof TypeVariable) {
-            mocker = new BaseMocker(mockConfig.getVariableType(((TypeVariable) type).getName()));
+            mocker = new BaseMocker(mockConfig.global().getVariableType(((TypeVariable) type).getName()));
         } else {
             mocker = new ClassMocker((Class) type, genericTypes);
         }

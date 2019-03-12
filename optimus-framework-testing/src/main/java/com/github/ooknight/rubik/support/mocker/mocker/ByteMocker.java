@@ -1,7 +1,6 @@
 package com.github.ooknight.rubik.support.mocker.mocker;
 
-import com.github.ooknight.rubik.support.mocker.MockConfig;
-import com.github.ooknight.rubik.support.mocker.Mocker;
+import com.github.ooknight.rubik.support.mocker.DataConfig;
 import com.github.ooknight.rubik.support.mocker.util.RandomUtils;
 
 /**
@@ -10,7 +9,7 @@ import com.github.ooknight.rubik.support.mocker.util.RandomUtils;
 public class ByteMocker implements Mocker<Byte> {
 
     @Override
-    public Byte mock(MockConfig mockConfig) {
-        return (byte) RandomUtils.nextInt(mockConfig.getByteRange()[0], mockConfig.getByteRange()[1]);
+    public Byte mock(DataConfig mockConfig) {
+        return (byte) RandomUtils.nextInt(mockConfig.byteRange()[0], mockConfig.byteRange()[1]);
     }
 }

@@ -1,7 +1,6 @@
 package com.github.ooknight.rubik.support.mocker.mocker;
 
-import com.github.ooknight.rubik.support.mocker.MockConfig;
-import com.github.ooknight.rubik.support.mocker.Mocker;
+import com.github.ooknight.rubik.support.mocker.DataConfig;
 import com.github.ooknight.rubik.support.mocker.util.RandomUtils;
 
 /**
@@ -10,7 +9,7 @@ import com.github.ooknight.rubik.support.mocker.util.RandomUtils;
 public class LongMocker implements Mocker<Long> {
 
     @Override
-    public Long mock(MockConfig mockConfig) {
-        return RandomUtils.nextLong(mockConfig.getLongRange()[0], mockConfig.getLongRange()[1]);
+    public Long mock(DataConfig mockConfig) {
+        return RandomUtils.nextLong(mockConfig.longRange()[0], mockConfig.longRange()[1]);
     }
 }

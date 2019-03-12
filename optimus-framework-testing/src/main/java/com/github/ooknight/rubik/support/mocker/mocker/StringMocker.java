@@ -1,7 +1,6 @@
 package com.github.ooknight.rubik.support.mocker.mocker;
 
-import com.github.ooknight.rubik.support.mocker.MockConfig;
-import com.github.ooknight.rubik.support.mocker.Mocker;
+import com.github.ooknight.rubik.support.mocker.DataConfig;
 import com.github.ooknight.rubik.support.mocker.util.RandomUtils;
 
 /**
@@ -10,9 +9,9 @@ import com.github.ooknight.rubik.support.mocker.util.RandomUtils;
 public class StringMocker implements Mocker<String> {
 
     @Override
-    public String mock(MockConfig mockConfig) {
-        int size = RandomUtils.nextSize(mockConfig.getSizeRange()[0], mockConfig.getSizeRange()[1]);
-        String[] stringSeed = mockConfig.getStringSeed();
+    public String mock(DataConfig mockConfig) {
+        int size = RandomUtils.nextSize(mockConfig.sizeRange()[0], mockConfig.sizeRange()[1]);
+        String[] stringSeed = mockConfig.stringSeed();
         StringBuilder sb = new StringBuilder(size);
         for (int i = 0; i < size; i++) {
             sb.append(stringSeed[RandomUtils.nextInt(0, stringSeed.length)]);

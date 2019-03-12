@@ -4,11 +4,11 @@ import com.github.ooknight.rubik.support.mocker.mocker.BaseMocker;
 
 /**
  * 模拟对象门面类
+ *
+ * @author jsonzou, kanyuxia, TaoYu
  */
-public final class Mock {
-
-    private Mock() {
-    }
+@SuppressWarnings("unchecked")
+public class Mock {
 
     /**
      * 模拟数据
@@ -28,7 +28,8 @@ public final class Mock {
      * @return 模拟数据对象
      */
     public static <T> T mock(Class<T> clazz, MockConfig mockConfig) {
-        return new BaseMocker<T>(clazz).mock(mockConfig);
+        DataConfig config = mockConfig.getDataConfig(clazz, null);
+        return new BaseMocker<T>(clazz).mock(config);
     }
 
     /**
@@ -55,6 +56,8 @@ public final class Mock {
      * @return 模拟数据对象
      */
     public static <T> T mock(TypeReference<T> typeReference, MockConfig mockConfig) {
-        return new BaseMocker<T>(typeReference.getType()).mock(mockConfig.init(typeReference.getType()));
+        mockConfig.init(typeReference.getType());
+        DataConfig config = mockConfig.globalDataConfig();
+        return new BaseMocker<T>(typeReference.getType()).mock(config);
     }
 }

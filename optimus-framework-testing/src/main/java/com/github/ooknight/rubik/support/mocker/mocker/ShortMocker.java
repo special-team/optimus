@@ -1,7 +1,6 @@
 package com.github.ooknight.rubik.support.mocker.mocker;
 
-import com.github.ooknight.rubik.support.mocker.MockConfig;
-import com.github.ooknight.rubik.support.mocker.Mocker;
+import com.github.ooknight.rubik.support.mocker.DataConfig;
 import com.github.ooknight.rubik.support.mocker.util.RandomUtils;
 
 /**
@@ -10,7 +9,7 @@ import com.github.ooknight.rubik.support.mocker.util.RandomUtils;
 public class ShortMocker implements Mocker<Short> {
 
     @Override
-    public Short mock(MockConfig mockConfig) {
-        return (short) RandomUtils.nextInt(mockConfig.getShortRange()[0], mockConfig.getShortRange()[1]);
+    public Short mock(DataConfig mockConfig) {
+        return (short) RandomUtils.nextInt(mockConfig.shortRange()[0], mockConfig.shortRange()[1]);
     }
 }

@@ -1,8 +1,6 @@
 package com.github.ooknight.rubik.support.mocker.mocker;
 
-import com.github.ooknight.rubik.support.mocker.MockConfig;
-import com.github.ooknight.rubik.support.mocker.Mocker;
-import com.github.ooknight.rubik.support.mocker.util.RandomUtils;
+import com.github.ooknight.rubik.support.mocker.DataConfig;
 
 import java.math.BigInteger;
 
@@ -12,7 +10,7 @@ import java.math.BigInteger;
 public class BigIntegerMocker implements Mocker<BigInteger> {
 
     @Override
-    public BigInteger mock(MockConfig mockConfig) {
-        return BigInteger.valueOf(RandomUtils.nextLong(mockConfig.getLongRange()[0], mockConfig.getLongRange()[1]));
+    public BigInteger mock(DataConfig mockConfig) {
+        return BigInteger.valueOf(mockConfig.global().getMocker(Long.class).mock(mockConfig));
     }
 }

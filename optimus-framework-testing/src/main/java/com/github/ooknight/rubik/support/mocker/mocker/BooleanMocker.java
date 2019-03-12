@@ -1,7 +1,6 @@
 package com.github.ooknight.rubik.support.mocker.mocker;
 
-import com.github.ooknight.rubik.support.mocker.MockConfig;
-import com.github.ooknight.rubik.support.mocker.Mocker;
+import com.github.ooknight.rubik.support.mocker.DataConfig;
 import com.github.ooknight.rubik.support.mocker.util.RandomUtils;
 
 /**
@@ -10,7 +9,8 @@ import com.github.ooknight.rubik.support.mocker.util.RandomUtils;
 public class BooleanMocker implements Mocker<Boolean> {
 
     @Override
-    public Boolean mock(MockConfig mockConfig) {
-        return RandomUtils.nextBoolean();
+    public Boolean mock(DataConfig mockConfig) {
+        boolean[] booleanSeed = mockConfig.booleanSeed();
+        return booleanSeed[RandomUtils.nextInt(0, booleanSeed.length)];
     }
 }
